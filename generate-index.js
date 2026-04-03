@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const BASE_DIR = "./public";
+const BASE_DIR = "./";
 
 function formatName(name) {
   return name
