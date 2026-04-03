@@ -1,0 +1,7 @@
+{
+  "name": "cviceni-test-2",
+  "private": true,
+  "scripts": {
+    "build": "node generate-index.js"
+  }
+}
