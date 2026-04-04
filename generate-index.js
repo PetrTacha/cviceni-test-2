@@ -151,12 +151,14 @@ const html = `
 
   .card {
     background: white;
+    color: inherit;
+    text-decoration: none;
     border-radius: 12px;
     padding: 0;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display: block;
   }
 
   .card-content {
@@ -200,23 +202,17 @@ ${groupedExercises.map(group => `
     <h2>${group.name}</h2>
     <div class="grid">
       ${group.entries.map(ex => `
-        <div class="card" onclick="openExercise('${ex.path}')">
+        <a class="card" href="${ex.path}" target="_blank" rel="noopener noreferrer">
           ${ex.thumbnail ? `<img class="thumb" src="${ex.thumbnail}" alt="${ex.name}" loading="lazy">` : ""}
           <div class="card-content">
             <div class="title">${ex.name}</div>
             <div class="path">${ex.path}</div>
           </div>
-        </div>
+        </a>
       `).join("")}
     </div>
   </section>
 `).join("")}
-
-<script>
-function openExercise(path) {
-  window.open(path, "_blank");
-}
-</script>
 
 </body>
 </html>
