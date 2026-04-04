@@ -1,7 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
-const BASE_DIR = "./";
+const BASE_DIR = ".";
+const IGNORE = ["node_modules", ".git", ".vercel"];
 
 function formatName(name) {
   return name
@@ -9,136 +10,111 @@ function formatName(name) {
     .replace(/\b\w/g, c => c.toUpperCase());
 }
 
-function scan(dir, base = "") {
+function findExercises(dir, base = "") {
   const items = fs.readdirSync(dir, { withFileTypes: true });
 
-  return items.map(item => {
+  let results = [];
+
+  for (const item of items) {
+    if (IGNORE.includes(item.name)) continue;
+
     const fullPath = path.join(dir, item.name);
     const relativePath = path.join(base, item.name);
 
     if (item.isDirectory()) {
-      return {
-        type: "folder",
-        name: formatName(item.name),
-        rawName: item.name,
-        children: scan(fullPath, relativePath)
-      };
-    } else if (item.name.endsWith(".html")) {
-      return {
-        type: "file",
-        name: formatName(item.name.replace(".html", "")),
-        rawName: item.name,
+      results = results.concat(findExercises(fullPath, relativePath));
+    }
+
+    if (item.isFile() && item.name === "index.html") {
+      const parts = relativePath.split(path.sep);
+
+      // remove "index.html"
+      parts.pop();
+
+      const folderName = parts[parts.length - 1] || "Root";
+
+      results.push({
+        name: formatName(folderName),
         path: relativePath
-      };
+      });
     }
-  }).filter(Boolean);
+  }
+
+  return results;
 }
 
-function renderTree(tree) {
-  return tree.map(item => {
-    if (item.type === "folder") {
-      return `
-        <div class="folder">
-          <div class="folder-title" onclick="toggle(this)">
-            📁 ${item.name}
-          </div>
-          <div class="folder-content">
-            ${renderTree(item.children)}
-          </div>
-        </div>
-      `;
-    } else {
-      return `
-        <div class="file" data-name="${item.name.toLowerCase()}">
-          📄 <a href="${item.path}">${item.name}</a>
-        </div>
-      `;
-    }
-  }).join("");
-}
-
-const tree = scan(BASE_DIR);
+const exercises = findExercises(BASE_DIR);
 
 const html = `
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Explorer</title>
+<title>Exercises</title>
 
 <style>
   body {
     font-family: system-ui;
-    background: #f5f5f5;
-    padding: 20px;
+    background: #f6f8fa;
+    padding: 30px;
   }
 
   h1 {
+    margin-bottom: 20px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: bold;
     margin-bottom: 10px;
   }
 
-  #search {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    font-size: 16px;
+  .path {
+    font-size: 12px;
+    color: #666;
+    word-break: break-all;
   }
 
-  .folder-title {
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-
-  .folder-content {
-    margin-left: 20px;
-    display: none;
-  }
-
-  .file {
-    margin-left: 20px;
-    margin-top: 5px;
-  }
-
-  a {
-    text-decoration: none;
-    color: #0366d6;
-  }
 </style>
-
 </head>
 
 <body>
 
-<h1>📂 Project Explorer</h1>
+<h1>🧪 Exercises</h1>
 
-<input id="search" placeholder="Search pages..." oninput="search()" />
-
-<div id="tree">
-  ${renderTree(tree)}
+<div class="grid">
+  ${exercises.map(ex => `
+    <div class="card" onclick="openExercise('${ex.path}')">
+      <div class="title">${ex.name}</div>
+      <div class="path">${ex.path}</div>
+    </div>
+  `).join("")}
 </div>
 
 <script>
-function toggle(el) {
-  const content = el.nextElementSibling;
-  content.style.display =
-    content.style.display === "none" ? "block" : "none";
+function openExercise(path) {
+  window.open(path, "_blank");
 }
-
-function search() {
-  const value = document.getElementById("search").value.toLowerCase();
-  const files = document.querySelectorAll(".file");
-
-  files.forEach(f => {
-    const name = f.dataset.name;
-    f.style.display = name.includes(value) ? "block" : "none";
-  });
-}
-
-// expand all folders by default
-document.querySelectorAll(".folder-content").forEach(el => {
-  el.style.display = "block";
-});
 </script>
 
 </body>
@@ -147,4 +123,4 @@ document.querySelectorAll(".folder-content").forEach(el => {
 
 fs.writeFileSync(path.join(BASE_DIR, "index.html"), html);
 
-console.log("✅ Explorer index generated");
+console.log(`✅ Generated ${exercises.length} exercise cards`);
