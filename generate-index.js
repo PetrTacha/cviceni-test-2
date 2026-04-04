@@ -14,6 +14,43 @@ function toWebPath(parts) {
   return parts.join("/");
 }
 
+function normalizeWebPath(input) {
+  return input.split("\\").join("/");
+}
+
+function extractThumbnail(indexFilePath) {
+  try {
+    const html = fs.readFileSync(indexFilePath, "utf8");
+    const markerIndex = html.indexOf('id="slide-initial"');
+    if (markerIndex === -1) return null;
+
+    const localChunk = html.slice(markerIndex, markerIndex + 6000);
+    const imageMatch = localChunk.match(/background-image:\s*url\(([^)]+)\)/i);
+
+    if (!imageMatch || !imageMatch[1]) return null;
+
+    return imageMatch[1].trim().replace(/^['"]|['"]$/g, "");
+  } catch {
+    return null;
+  }
+}
+
+function resolveThumbnailPath(exerciseFolderPath, thumbnailPath) {
+  if (!thumbnailPath) return null;
+  if (thumbnailPath.startsWith("http://") || thumbnailPath.startsWith("https://") || thumbnailPath.startsWith("/")) {
+    return thumbnailPath;
+  }
+
+  const topFolder = exerciseFolderPath.split("/")[0] || "";
+  const assetIndex = thumbnailPath.indexOf("assets/");
+  if (assetIndex !== -1 && topFolder) {
+    return `${topFolder}/${thumbnailPath.slice(assetIndex)}`;
+  }
+
+  const merged = path.posix.normalize(`${exerciseFolderPath}/${thumbnailPath}`);
+  return normalizeWebPath(merged);
+}
+
 function findExercises(dir, base = "") {
   const items = fs.readdirSync(dir, { withFileTypes: true });
 
@@ -40,10 +77,13 @@ function findExercises(dir, base = "") {
 
       const folderName = parts[parts.length - 1] || "Root";
       const folderPath = toWebPath(parts);
+      const thumbRaw = extractThumbnail(fullPath);
+      const thumbnail = resolveThumbnailPath(folderPath, thumbRaw);
 
       results.push({
         name: formatName(folderName),
-        path: folderPath
+        path: folderPath,
+        thumbnail
       });
     }
   }
@@ -112,10 +152,23 @@ const html = `
   .card {
     background: white;
     border-radius: 12px;
-    padding: 20px;
+    padding: 0;
+    overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .card-content {
+    padding: 16px;
+  }
+
+  .thumb {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+    background: #e5e7eb;
   }
 
   .card:hover {
@@ -148,8 +201,11 @@ ${groupedExercises.map(group => `
     <div class="grid">
       ${group.entries.map(ex => `
         <div class="card" onclick="openExercise('${ex.path}')">
-          <div class="title">${ex.name}</div>
-          <div class="path">${ex.path}</div>
+          ${ex.thumbnail ? `<img class="thumb" src="${ex.thumbnail}" alt="${ex.name}" loading="lazy">` : ""}
+          <div class="card-content">
+            <div class="title">${ex.name}</div>
+            <div class="path">${ex.path}</div>
+          </div>
         </div>
       `).join("")}
     </div>
