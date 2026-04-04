@@ -202,7 +202,7 @@ ${groupedExercises.map(group => `
     <h2>${group.name}</h2>
     <div class="grid">
       ${group.entries.map(ex => `
-        <a class="card" href="${ex.path}" target="_blank" rel="noopener noreferrer">
+        <a class="card" href="${ex.path}">
           ${ex.thumbnail ? `<img class="thumb" src="${ex.thumbnail}" alt="${ex.name}" loading="lazy">` : ""}
           <div class="card-content">
             <div class="title">${ex.name}</div>
