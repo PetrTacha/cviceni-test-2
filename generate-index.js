@@ -10,6 +10,10 @@ function formatName(name) {
     .replace(/\b\w/g, c => c.toUpperCase());
 }
 
+function toWebPath(parts) {
+  return parts.join("/");
+}
+
 function findExercises(dir, base = "") {
   const items = fs.readdirSync(dir, { withFileTypes: true });
 
@@ -31,11 +35,15 @@ function findExercises(dir, base = "") {
       // remove "index.html"
       parts.pop();
 
+      // Skip the generated root index.html file.
+      if (parts.length === 0) continue;
+
       const folderName = parts[parts.length - 1] || "Root";
+      const folderPath = toWebPath(parts);
 
       results.push({
         name: formatName(folderName),
-        path: relativePath
+        path: folderPath
       });
     }
   }
@@ -44,6 +52,29 @@ function findExercises(dir, base = "") {
 }
 
 const exercises = findExercises(BASE_DIR);
+
+function groupByTopFolder(items) {
+  const groups = new Map();
+
+  for (const item of items) {
+    const topFolder = item.path.split("/")[0] || "root";
+
+    if (!groups.has(topFolder)) {
+      groups.set(topFolder, []);
+    }
+
+    groups.get(topFolder).push(item);
+  }
+
+  return Array.from(groups.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([name, entries]) => ({
+      name,
+      entries: entries.sort((a, b) => a.path.localeCompare(b.path))
+    }));
+}
+
+const groupedExercises = groupByTopFolder(exercises);
 
 const html = `
 <!DOCTYPE html>
@@ -61,6 +92,15 @@ const html = `
 
   h1 {
     margin-bottom: 20px;
+  }
+
+  h2 {
+    margin: 28px 0 12px;
+    font-size: 18px;
+  }
+
+  .group {
+    margin-bottom: 24px;
   }
 
   .grid {
@@ -102,14 +142,19 @@ const html = `
 
 <h1>🧪 Exercises</h1>
 
-<div class="grid">
-  ${exercises.map(ex => `
-    <div class="card" onclick="openExercise('${ex.path}')">
-      <div class="title">${ex.name}</div>
-      <div class="path">${ex.path}</div>
+${groupedExercises.map(group => `
+  <section class="group">
+    <h2>${group.name}</h2>
+    <div class="grid">
+      ${group.entries.map(ex => `
+        <div class="card" onclick="openExercise('${ex.path}')">
+          <div class="title">${ex.name}</div>
+          <div class="path">${ex.path}</div>
+        </div>
+      `).join("")}
     </div>
-  `).join("")}
-</div>
+  </section>
+`).join("")}
 
 <script>
 function openExercise(path) {
