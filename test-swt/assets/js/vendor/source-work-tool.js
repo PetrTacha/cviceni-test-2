@@ -509,15 +509,16 @@ var SourceWorkTool=(function(d){"use strict";/**
     />
   </g>
 `;var v=(o=>(o.New="new",o.Done="done",o.Warn="warn",o.Error="error",o))(v||{});function ke(o,e){const i=o.userData.sourceDetails.find(a=>a.id===e.id)?.selectedTags??[];if(i.length===0)return{iconState:"new",collidingTagIds:[]};const s=e.colisionMode??M.None;if(s===M.None)return{iconState:"done",collidingTagIds:[]};const r=new Set;for(const a of o.userData.sourceDetails){if(a.id===e.id)continue;const l=o.sourceDetails.find(n=>n.id===a.id);if(l&&l.selectionId===e.selectionId)for(const n of a.selectedTags)i.includes(n)&&r.add(n)}return r.size===0?{iconState:"done",collidingTagIds:[]}:{iconState:s===M.Error?"error":"warn",collidingTagIds:Array.from(r)}}function rt(o,e){return ke(o,e).iconState}function at(o,e){const t=o.userData.sourceDetails.find(s=>s.id===e.id)?.selectedTags??[],i=o.selections.find(s=>s.id===e.selectionId);return t.map(s=>i?.tags.find(r=>r.id===s)?.value??s)}function nt(o,e){if(e.dependencyLinks.length===0)return[];const t=[];for(const i of e.dependencyLinks)for(const s of(o.dependencyData??[]).filter(r=>r.moduleType==="swt")){const r=s.userData.sourceDetails.find(a=>a.id===i);if(r)for(const a of r.selectedTags)a.tagValue&&t.push(a.tagValue)}return t}function lt(o,e,t){return o.sourceDetails.map(i=>{const s=at(o,i),r=nt(o,i);return ct({uiModel:o,item:i,selectedTagLabels:s,previousTagLabels:r,onSelect:e,onKeydown:t})})}function ct(o){const{uiModel:e,item:t,selectedTagLabels:i,previousTagLabels:s,onSelect:r,onKeydown:a}=o,l=Number(t.position?.x??0),n=Number(t.position?.y??0),c=60,u=rt(e,t),h={[v.New]:tt,[v.Done]:st,[v.Warn]:it,[v.Error]:ot};return b`
-    <g transform=${`translate(${l} ${n})`}>
+    <g>
       ${i.length>0||s.length>0?b`
-            <foreignObject x="-5" y="-27" width="104" height="54" overflow="visible">
+            <foreignObject x=${l-5} y=${n-27} width="104" height="54" overflow="visible">
               <div class="swt__tag-box">
                 <div class="swt__tag-top">${i[0]||""}</div>
                 <div class="swt__tag-bottom">${s[0]||""}</div>
               </div>
             </foreignObject>
           `:g}
+      <g transform=${`translate(${l} ${n})`}>
       <svg
         class="swt__pin ${""}"
         x=${-30}
@@ -545,6 +546,7 @@ var SourceWorkTool=(function(d){"use strict";/**
             ${h[u]}
           </g>
       </svg>
+      </g>
     </g>
   `}function dt(o){const{configuration:e,uiModel:t,onSelect:i,onKeydown:s,onImgLoad:r,onModalClose:a,onTagSelect:l}=o,n=t.imgWidth>0?t.imgWidth:0,c=t.imgHeight>0?t.imgHeight:0;return _`
     <div class="swt">
