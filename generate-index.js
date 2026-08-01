@@ -115,6 +115,9 @@ function groupByTopFolder(items) {
 }
 
 const groupedExercises = groupByTopFolder(exercises);
+const faviconSvg = encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="82">🧪</text></svg>'
+);
 
 const html = `
 <!DOCTYPE html>
@@ -122,6 +125,7 @@ const html = `
 <head>
 <meta charset="UTF-8">
 <title>Exercises</title>
+<link rel="icon" href="data:image/svg+xml,${faviconSvg}">
 
 <style>
   body {
