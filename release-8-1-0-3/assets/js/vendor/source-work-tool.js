@@ -2,21 +2,21 @@ var SourceWorkTool=(function(h){"use strict";/**
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const G=globalThis,re=G.ShadowRoot&&(G.ShadyCSS===void 0||G.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,ae=Symbol(),ge=new WeakMap;let ue=class{constructor(e,t,o){if(this._$cssResult$=!0,o!==ae)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o;const t=this.t;if(re&&e===void 0){const o=t!==void 0&&t.length===1;o&&(e=ge.get(t)),e===void 0&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),o&&ge.set(t,e))}return e}toString(){return this.cssText}};const je=i=>new ue(typeof i=="string"?i:i+"",void 0,ae),M=(i,...e)=>{const t=i.length===1?i[0]:e.reduce((o,s,r)=>o+(a=>{if(a._$cssResult$===!0)return a.cssText;if(typeof a=="number")return a;throw Error("Value passed to 'css' function must be a 'css' function result: "+a+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(s)+i[r+1],i[0]);return new ue(t,i,ae)},We=(i,e)=>{if(re)i.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const t of e){const o=document.createElement("style"),s=G.litNonce;s!==void 0&&o.setAttribute("nonce",s),o.textContent=t.cssText,i.appendChild(o)}},fe=re?i=>i:i=>i instanceof CSSStyleSheet?(e=>{let t="";for(const o of e.cssRules)t+=o.cssText;return je(t)})(i):i;/**
+ */const G=globalThis,ae=G.ShadowRoot&&(G.ShadyCSS===void 0||G.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,re=Symbol(),ge=new WeakMap;let ue=class{constructor(e,t,o){if(this._$cssResult$=!0,o!==re)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o;const t=this.t;if(ae&&e===void 0){const o=t!==void 0&&t.length===1;o&&(e=ge.get(t)),e===void 0&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),o&&ge.set(t,e))}return e}toString(){return this.cssText}};const je=i=>new ue(typeof i=="string"?i:i+"",void 0,re),D=(i,...e)=>{const t=i.length===1?i[0]:e.reduce((o,s,a)=>o+(r=>{if(r._$cssResult$===!0)return r.cssText;if(typeof r=="number")return r;throw Error("Value passed to 'css' function must be a 'css' function result: "+r+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(s)+i[a+1],i[0]);return new ue(t,i,re)},We=(i,e)=>{if(ae)i.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const t of e){const o=document.createElement("style"),s=G.litNonce;s!==void 0&&o.setAttribute("nonce",s),o.textContent=t.cssText,i.appendChild(o)}},fe=ae?i=>i:i=>i instanceof CSSStyleSheet?(e=>{let t="";for(const o of e.cssRules)t+=o.cssText;return je(t)})(i):i;/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const{is:Ve,defineProperty:qe,getOwnPropertyDescriptor:Ke,getOwnPropertyNames:Ge,getOwnPropertySymbols:Ye,getPrototypeOf:Xe}=Object,k=globalThis,me=k.trustedTypes,Ze=me?me.emptyScript:"",Fe=k.reactiveElementPolyfillSupport,U=(i,e)=>i,Y={toAttribute(i,e){switch(e){case Boolean:i=i?Ze:null;break;case Object:case Array:i=i==null?i:JSON.stringify(i)}return i},fromAttribute(i,e){let t=i;switch(e){case Boolean:t=i!==null;break;case Number:t=i===null?null:Number(i);break;case Object:case Array:try{t=JSON.parse(i)}catch{t=null}}return t}},ne=(i,e)=>!Ve(i,e),be={attribute:!0,type:String,converter:Y,reflect:!1,useDefault:!1,hasChanged:ne};Symbol.metadata??(Symbol.metadata=Symbol("metadata")),k.litPropertyMetadata??(k.litPropertyMetadata=new WeakMap);let P=class extends HTMLElement{static addInitializer(e){this._$Ei(),(this.l??(this.l=[])).push(e)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(e,t=be){if(t.state&&(t.attribute=!1),this._$Ei(),this.prototype.hasOwnProperty(e)&&((t=Object.create(t)).wrapped=!0),this.elementProperties.set(e,t),!t.noAccessor){const o=Symbol(),s=this.getPropertyDescriptor(e,o,t);s!==void 0&&qe(this.prototype,e,s)}}static getPropertyDescriptor(e,t,o){const{get:s,set:r}=Ke(this.prototype,e)??{get(){return this[t]},set(a){this[t]=a}};return{get:s,set(a){const l=s?.call(this);r?.call(this,a),this.requestUpdate(e,l,o)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)??be}static _$Ei(){if(this.hasOwnProperty(U("elementProperties")))return;const e=Xe(this);e.finalize(),e.l!==void 0&&(this.l=[...e.l]),this.elementProperties=new Map(e.elementProperties)}static finalize(){if(this.hasOwnProperty(U("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(U("properties"))){const t=this.properties,o=[...Ge(t),...Ye(t)];for(const s of o)this.createProperty(s,t[s])}const e=this[Symbol.metadata];if(e!==null){const t=litPropertyMetadata.get(e);if(t!==void 0)for(const[o,s]of t)this.elementProperties.set(o,s)}this._$Eh=new Map;for(const[t,o]of this.elementProperties){const s=this._$Eu(t,o);s!==void 0&&this._$Eh.set(s,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(e){const t=[];if(Array.isArray(e)){const o=new Set(e.flat(1/0).reverse());for(const s of o)t.unshift(fe(s))}else e!==void 0&&t.push(fe(e));return t}static _$Eu(e,t){const o=t.attribute;return o===!1?void 0:typeof o=="string"?o:typeof e=="string"?e.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){this._$ES=new Promise(e=>this.enableUpdating=e),this._$AL=new Map,this._$E_(),this.requestUpdate(),this.constructor.l?.forEach(e=>e(this))}addController(e){(this._$EO??(this._$EO=new Set)).add(e),this.renderRoot!==void 0&&this.isConnected&&e.hostConnected?.()}removeController(e){this._$EO?.delete(e)}_$E_(){const e=new Map,t=this.constructor.elementProperties;for(const o of t.keys())this.hasOwnProperty(o)&&(e.set(o,this[o]),delete this[o]);e.size>0&&(this._$Ep=e)}createRenderRoot(){const e=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return We(e,this.constructor.elementStyles),e}connectedCallback(){this.renderRoot??(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),this._$EO?.forEach(e=>e.hostConnected?.())}enableUpdating(e){}disconnectedCallback(){this._$EO?.forEach(e=>e.hostDisconnected?.())}attributeChangedCallback(e,t,o){this._$AK(e,o)}_$ET(e,t){const o=this.constructor.elementProperties.get(e),s=this.constructor._$Eu(e,o);if(s!==void 0&&o.reflect===!0){const r=(o.converter?.toAttribute!==void 0?o.converter:Y).toAttribute(t,o.type);this._$Em=e,r==null?this.removeAttribute(s):this.setAttribute(s,r),this._$Em=null}}_$AK(e,t){const o=this.constructor,s=o._$Eh.get(e);if(s!==void 0&&this._$Em!==s){const r=o.getPropertyOptions(s),a=typeof r.converter=="function"?{fromAttribute:r.converter}:r.converter?.fromAttribute!==void 0?r.converter:Y;this._$Em=s;const l=a.fromAttribute(t,r.type);this[s]=l??this._$Ej?.get(s)??l,this._$Em=null}}requestUpdate(e,t,o,s=!1,r){if(e!==void 0){const a=this.constructor;if(s===!1&&(r=this[e]),o??(o=a.getPropertyOptions(e)),!((o.hasChanged??ne)(r,t)||o.useDefault&&o.reflect&&r===this._$Ej?.get(e)&&!this.hasAttribute(a._$Eu(e,o))))return;this.C(e,t,o)}this.isUpdatePending===!1&&(this._$ES=this._$EP())}C(e,t,{useDefault:o,reflect:s,wrapped:r},a){o&&!(this._$Ej??(this._$Ej=new Map)).has(e)&&(this._$Ej.set(e,a??t??this[e]),r!==!0||a!==void 0)||(this._$AL.has(e)||(this.hasUpdated||o||(t=void 0),this._$AL.set(e,t)),s===!0&&this._$Em!==e&&(this._$Eq??(this._$Eq=new Set)).add(e))}async _$EP(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}const e=this.scheduleUpdate();return e!=null&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??(this.renderRoot=this.createRenderRoot()),this._$Ep){for(const[s,r]of this._$Ep)this[s]=r;this._$Ep=void 0}const o=this.constructor.elementProperties;if(o.size>0)for(const[s,r]of o){const{wrapped:a}=r,l=this[s];a!==!0||this._$AL.has(s)||l===void 0||this.C(s,void 0,r,l)}}let e=!1;const t=this._$AL;try{e=this.shouldUpdate(t),e?(this.willUpdate(t),this._$EO?.forEach(o=>o.hostUpdate?.()),this.update(t)):this._$EM()}catch(o){throw e=!1,this._$EM(),o}e&&this._$AE(t)}willUpdate(e){}_$AE(e){this._$EO?.forEach(t=>t.hostUpdated?.()),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$EM(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(e){return!0}update(e){this._$Eq&&(this._$Eq=this._$Eq.forEach(t=>this._$ET(t,this[t]))),this._$EM()}updated(e){}firstUpdated(e){}};P.elementStyles=[],P.shadowRootOptions={mode:"open"},P[U("elementProperties")]=new Map,P[U("finalized")]=new Map,Fe?.({ReactiveElement:P}),(k.reactiveElementVersions??(k.reactiveElementVersions=[])).push("2.1.2");/**
+ */const{is:Ve,defineProperty:qe,getOwnPropertyDescriptor:Ke,getOwnPropertyNames:Ge,getOwnPropertySymbols:Ye,getPrototypeOf:Xe}=Object,k=globalThis,be=k.trustedTypes,Ze=be?be.emptyScript:"",Fe=k.reactiveElementPolyfillSupport,H=(i,e)=>i,Y={toAttribute(i,e){switch(e){case Boolean:i=i?Ze:null;break;case Object:case Array:i=i==null?i:JSON.stringify(i)}return i},fromAttribute(i,e){let t=i;switch(e){case Boolean:t=i!==null;break;case Number:t=i===null?null:Number(i);break;case Object:case Array:try{t=JSON.parse(i)}catch{t=null}}return t}},ne=(i,e)=>!Ve(i,e),me={attribute:!0,type:String,converter:Y,reflect:!1,useDefault:!1,hasChanged:ne};Symbol.metadata??(Symbol.metadata=Symbol("metadata")),k.litPropertyMetadata??(k.litPropertyMetadata=new WeakMap);let z=class extends HTMLElement{static addInitializer(e){this._$Ei(),(this.l??(this.l=[])).push(e)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(e,t=me){if(t.state&&(t.attribute=!1),this._$Ei(),this.prototype.hasOwnProperty(e)&&((t=Object.create(t)).wrapped=!0),this.elementProperties.set(e,t),!t.noAccessor){const o=Symbol(),s=this.getPropertyDescriptor(e,o,t);s!==void 0&&qe(this.prototype,e,s)}}static getPropertyDescriptor(e,t,o){const{get:s,set:a}=Ke(this.prototype,e)??{get(){return this[t]},set(r){this[t]=r}};return{get:s,set(r){const l=s?.call(this);a?.call(this,r),this.requestUpdate(e,l,o)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)??me}static _$Ei(){if(this.hasOwnProperty(H("elementProperties")))return;const e=Xe(this);e.finalize(),e.l!==void 0&&(this.l=[...e.l]),this.elementProperties=new Map(e.elementProperties)}static finalize(){if(this.hasOwnProperty(H("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(H("properties"))){const t=this.properties,o=[...Ge(t),...Ye(t)];for(const s of o)this.createProperty(s,t[s])}const e=this[Symbol.metadata];if(e!==null){const t=litPropertyMetadata.get(e);if(t!==void 0)for(const[o,s]of t)this.elementProperties.set(o,s)}this._$Eh=new Map;for(const[t,o]of this.elementProperties){const s=this._$Eu(t,o);s!==void 0&&this._$Eh.set(s,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(e){const t=[];if(Array.isArray(e)){const o=new Set(e.flat(1/0).reverse());for(const s of o)t.unshift(fe(s))}else e!==void 0&&t.push(fe(e));return t}static _$Eu(e,t){const o=t.attribute;return o===!1?void 0:typeof o=="string"?o:typeof e=="string"?e.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){this._$ES=new Promise(e=>this.enableUpdating=e),this._$AL=new Map,this._$E_(),this.requestUpdate(),this.constructor.l?.forEach(e=>e(this))}addController(e){(this._$EO??(this._$EO=new Set)).add(e),this.renderRoot!==void 0&&this.isConnected&&e.hostConnected?.()}removeController(e){this._$EO?.delete(e)}_$E_(){const e=new Map,t=this.constructor.elementProperties;for(const o of t.keys())this.hasOwnProperty(o)&&(e.set(o,this[o]),delete this[o]);e.size>0&&(this._$Ep=e)}createRenderRoot(){const e=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return We(e,this.constructor.elementStyles),e}connectedCallback(){this.renderRoot??(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),this._$EO?.forEach(e=>e.hostConnected?.())}enableUpdating(e){}disconnectedCallback(){this._$EO?.forEach(e=>e.hostDisconnected?.())}attributeChangedCallback(e,t,o){this._$AK(e,o)}_$ET(e,t){const o=this.constructor.elementProperties.get(e),s=this.constructor._$Eu(e,o);if(s!==void 0&&o.reflect===!0){const a=(o.converter?.toAttribute!==void 0?o.converter:Y).toAttribute(t,o.type);this._$Em=e,a==null?this.removeAttribute(s):this.setAttribute(s,a),this._$Em=null}}_$AK(e,t){const o=this.constructor,s=o._$Eh.get(e);if(s!==void 0&&this._$Em!==s){const a=o.getPropertyOptions(s),r=typeof a.converter=="function"?{fromAttribute:a.converter}:a.converter?.fromAttribute!==void 0?a.converter:Y;this._$Em=s;const l=r.fromAttribute(t,a.type);this[s]=l??this._$Ej?.get(s)??l,this._$Em=null}}requestUpdate(e,t,o,s=!1,a){if(e!==void 0){const r=this.constructor;if(s===!1&&(a=this[e]),o??(o=r.getPropertyOptions(e)),!((o.hasChanged??ne)(a,t)||o.useDefault&&o.reflect&&a===this._$Ej?.get(e)&&!this.hasAttribute(r._$Eu(e,o))))return;this.C(e,t,o)}this.isUpdatePending===!1&&(this._$ES=this._$EP())}C(e,t,{useDefault:o,reflect:s,wrapped:a},r){o&&!(this._$Ej??(this._$Ej=new Map)).has(e)&&(this._$Ej.set(e,r??t??this[e]),a!==!0||r!==void 0)||(this._$AL.has(e)||(this.hasUpdated||o||(t=void 0),this._$AL.set(e,t)),s===!0&&this._$Em!==e&&(this._$Eq??(this._$Eq=new Set)).add(e))}async _$EP(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}const e=this.scheduleUpdate();return e!=null&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??(this.renderRoot=this.createRenderRoot()),this._$Ep){for(const[s,a]of this._$Ep)this[s]=a;this._$Ep=void 0}const o=this.constructor.elementProperties;if(o.size>0)for(const[s,a]of o){const{wrapped:r}=a,l=this[s];r!==!0||this._$AL.has(s)||l===void 0||this.C(s,void 0,a,l)}}let e=!1;const t=this._$AL;try{e=this.shouldUpdate(t),e?(this.willUpdate(t),this._$EO?.forEach(o=>o.hostUpdate?.()),this.update(t)):this._$EM()}catch(o){throw e=!1,this._$EM(),o}e&&this._$AE(t)}willUpdate(e){}_$AE(e){this._$EO?.forEach(t=>t.hostUpdated?.()),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$EM(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(e){return!0}update(e){this._$Eq&&(this._$Eq=this._$Eq.forEach(t=>this._$ET(t,this[t]))),this._$EM()}updated(e){}firstUpdated(e){}};z.elementStyles=[],z.shadowRootOptions={mode:"open"},z[H("elementProperties")]=new Map,z[H("finalized")]=new Map,Fe?.({ReactiveElement:z}),(k.reactiveElementVersions??(k.reactiveElementVersions=[])).push("2.1.2");/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const H=globalThis,_e=i=>i,X=H.trustedTypes,we=X?X.createPolicy("lit-html",{createHTML:i=>i}):void 0,ve="$lit$",$=`lit$${Math.random().toFixed(9).slice(2)}$`,ye="?"+$,Je=`<${ye}>`,D=document,N=()=>D.createComment(""),j=i=>i===null||typeof i!="object"&&typeof i!="function",le=Array.isArray,Qe=i=>le(i)||typeof i?.[Symbol.iterator]=="function",ce=`[ 	
+ */const U=globalThis,_e=i=>i,X=U.trustedTypes,we=X?X.createPolicy("lit-html",{createHTML:i=>i}):void 0,ve="$lit$",$=`lit$${Math.random().toFixed(9).slice(2)}$`,ye="?"+$,Je=`<${ye}>`,M=document,N=()=>M.createComment(""),j=i=>i===null||typeof i!="object"&&typeof i!="function",le=Array.isArray,Qe=i=>le(i)||typeof i?.[Symbol.iterator]=="function",ce=`[ 	
 \f\r]`,W=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,xe=/-->/g,ke=/>/g,E=RegExp(`>|${ce}(?:([^\\s"'>=/]+)(${ce}*=${ce}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`,"g"),$e=/'/g,Te=/"/g,Se=/^(?:script|style|textarea|title)$/i,Ae=i=>(e,...t)=>({_$litType$:i,strings:e,values:t}),f=Ae(1),y=Ae(2),z=Symbol.for("lit-noChange"),g=Symbol.for("lit-nothing"),Ce=new WeakMap,I=D.createTreeWalker(D,129);function Me(i,e){if(!le(i)||!i.hasOwnProperty("raw"))throw Error("invalid template strings array");return we!==void 0?we.createHTML(e):e}const et=(i,e)=>{const t=i.length-1,o=[];let s,r=e===2?"<svg>":e===3?"<math>":"",a=W;for(let l=0;l<t;l++){const n=i[l];let d,p,c=-1,m=0;for(;m<n.length&&(a.lastIndex=m,p=a.exec(n),p!==null);)m=a.lastIndex,a===W?p[1]==="!--"?a=xe:p[1]!==void 0?a=ke:p[2]!==void 0?(Se.test(p[2])&&(s=RegExp("</"+p[2],"g")),a=E):p[3]!==void 0&&(a=E):a===E?p[0]===">"?(a=s??W,c=-1):p[1]===void 0?c=-2:(c=a.lastIndex-p[2].length,d=p[1],a=p[3]===void 0?E:p[3]==='"'?Te:$e):a===Te||a===$e?a=E:a===xe||a===ke?a=W:(a=E,s=void 0);const _=a===E&&i[l+1].startsWith("/>")?" ":"";r+=a===W?n+Je:c>=0?(o.push(d),n.slice(0,c)+ve+n.slice(c)+$+_):n+$+(c===-2?l:_)}return[Me(i,r+(i[t]||"<?>")+(e===2?"</svg>":e===3?"</math>":"")),o]};class V{constructor({strings:e,_$litType$:t},o){let s;this.parts=[];let r=0,a=0;const l=e.length-1,n=this.parts,[d,p]=et(e,t);if(this.el=V.createElement(d,o),I.currentNode=this.el.content,t===2||t===3){const c=this.el.content.firstChild;c.replaceWith(...c.childNodes)}for(;(s=I.nextNode())!==null&&n.length<l;){if(s.nodeType===1){if(s.hasAttributes())for(const c of s.getAttributeNames())if(c.endsWith(ve)){const m=p[a++],_=s.getAttribute(c).split($),A=/([.?@])?(.*)/.exec(m);n.push({type:1,index:r,name:A[2],strings:_,ctor:A[1]==="."?ot:A[1]==="?"?st:A[1]==="@"?it:Z}),s.removeAttribute(c)}else c.startsWith($)&&(n.push({type:6,index:r}),s.removeAttribute(c));if(Se.test(s.tagName)){const c=s.textContent.split($),m=c.length-1;if(m>0){s.textContent=X?X.emptyScript:"";for(let _=0;_<m;_++)s.append(c[_],N()),I.nextNode(),n.push({type:2,index:++r});s.append(c[m],N())}}}else if(s.nodeType===8)if(s.data===ye)n.push({type:2,index:r});else{let c=-1;for(;(c=s.data.indexOf($,c+1))!==-1;)n.push({type:7,index:r}),c+=$.length-1}r++}}static createElement(e,t){const o=D.createElement("template");return o.innerHTML=e,o}}function B(i,e,t=i,o){if(e===z)return e;let s=o!==void 0?t._$Co?.[o]:t._$Cl;const r=j(e)?void 0:e._$litDirective$;return s?.constructor!==r&&(s?._$AO?.(!1),r===void 0?s=void 0:(s=new r(i),s._$AT(i,t,o)),o!==void 0?(t._$Co??(t._$Co=[]))[o]=s:t._$Cl=s),s!==void 0&&(e=B(i,s._$AS(i,e.values),s,o)),e}class tt{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){const{el:{content:t},parts:o}=this._$AD,s=(e?.creationScope??D).importNode(t,!0);I.currentNode=s;let r=I.nextNode(),a=0,l=0,n=o[0];for(;n!==void 0;){if(a===n.index){let d;n.type===2?d=new q(r,r.nextSibling,this,e):n.type===1?d=new n.ctor(r,n.name,n.strings,this,e):n.type===6&&(d=new rt(r,this,e)),this._$AV.push(d),n=o[++l]}a!==n?.index&&(r=I.nextNode(),a++)}return I.currentNode=D,s}p(e){let t=0;for(const o of this._$AV)o!==void 0&&(o.strings!==void 0?(o._$AI(e,o,t),t+=o.strings.length-2):o._$AI(e[t])),t++}}class q{get _$AU(){return this._$AM?._$AU??this._$Cv}constructor(e,t,o,s){this.type=2,this._$AH=g,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=o,this.options=s,this._$Cv=s?.isConnected??!0}get parentNode(){let e=this._$AA.parentNode;const t=this._$AM;return t!==void 0&&e?.nodeType===11&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=B(this,e,t),j(e)?e===g||e==null||e===""?(this._$AH!==g&&this._$AR(),this._$AH=g):e!==this._$AH&&e!==z&&this._(e):e._$litType$!==void 0?this.$(e):e.nodeType!==void 0?this.T(e):Qe(e)?this.k(e):this._(e)}O(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}T(e){this._$AH!==e&&(this._$AR(),this._$AH=this.O(e))}_(e){this._$AH!==g&&j(this._$AH)?this._$AA.nextSibling.data=e:this.T(D.createTextNode(e)),this._$AH=e}$(e){const{values:t,_$litType$:o}=e,s=typeof o=="number"?this._$AC(e):(o.el===void 0&&(o.el=V.createElement(Me(o.h,o.h[0]),this.options)),o);if(this._$AH?._$AD===s)this._$AH.p(t);else{const r=new tt(s,this),a=r.u(this.options);r.p(t),this.T(a),this._$AH=r}}_$AC(e){let t=Ce.get(e.strings);return t===void 0&&Ce.set(e.strings,t=new V(e)),t}k(e){le(this._$AH)||(this._$AH=[],this._$AR());const t=this._$AH;let o,s=0;for(const r of e)s===t.length?t.push(o=new q(this.O(N()),this.O(N()),this,this.options)):o=t[s],o._$AI(r),s++;s<t.length&&(this._$AR(o&&o._$AB.nextSibling,s),t.length=s)}_$AR(e=this._$AA.nextSibling,t){for(this._$AP?.(!1,!0,t);e!==this._$AB;){const o=_e(e).nextSibling;_e(e).remove(),e=o}}setConnected(e){this._$AM===void 0&&(this._$Cv=e,this._$AP?.(e))}}class Z{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(e,t,o,s,r){this.type=1,this._$AH=g,this._$AN=void 0,this.element=e,this.name=t,this._$AM=s,this.options=r,o.length>2||o[0]!==""||o[1]!==""?(this._$AH=Array(o.length-1).fill(new String),this.strings=o):this._$AH=g}_$AI(e,t=this,o,s){const r=this.strings;let a=!1;if(r===void 0)e=B(this,e,t,0),a=!j(e)||e!==this._$AH&&e!==z,a&&(this._$AH=e);else{const l=e;let n,d;for(e=r[0],n=0;n<r.length-1;n++)d=B(this,l[o+n],t,n),d===z&&(d=this._$AH[n]),a||(a=!j(d)||d!==this._$AH[n]),d===g?e=g:e!==g&&(e+=(d??"")+r[n+1]),this._$AH[n]=d}a&&!s&&this.j(e)}j(e){e===g?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,e??"")}}class ot extends Z{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===g?void 0:e}}class st extends Z{constructor(){super(...arguments),this.type=4}j(e){this.element.toggleAttribute(this.name,!!e&&e!==g)}}class it extends Z{constructor(e,t,o,s,r){super(e,t,o,s,r),this.type=5}_$AI(e,t=this){if((e=B(this,e,t,0)??g)===z)return;const o=this._$AH,s=e===g&&o!==g||e.capture!==o.capture||e.once!==o.once||e.passive!==o.passive,r=e!==g&&(o===g||s);s&&this.element.removeEventListener(this.name,this,o),r&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){typeof this._$AH=="function"?this._$AH.call(this.options?.host??this.element,e):this._$AH.handleEvent(e)}}class rt{constructor(e,t,o){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=o}get _$AU(){return this._$AM._$AU}_$AI(e){B(this,e)}}const at=H.litHtmlPolyfillSupport;at?.(V,q),(H.litHtmlVersions??(H.litHtmlVersions=[])).push("3.3.2");const nt=(i,e,t)=>{const o=t?.renderBefore??e;let s=o._$litPart$;if(s===void 0){const r=t?.renderBefore??null;o._$litPart$=s=new q(e.insertBefore(N(),r),r,void 0,t??{})}return s._$AI(i),s};/**
+\f\r"'\`<>=]|("|')|))|$)`,"g"),$e=/'/g,Te=/"/g,Se=/^(?:script|style|textarea|title)$/i,Ae=i=>(e,...t)=>({_$litType$:i,strings:e,values:t}),f=Ae(1),y=Ae(2),P=Symbol.for("lit-noChange"),g=Symbol.for("lit-nothing"),Ce=new WeakMap,I=M.createTreeWalker(M,129);function De(i,e){if(!le(i)||!i.hasOwnProperty("raw"))throw Error("invalid template strings array");return we!==void 0?we.createHTML(e):e}const et=(i,e)=>{const t=i.length-1,o=[];let s,a=e===2?"<svg>":e===3?"<math>":"",r=W;for(let l=0;l<t;l++){const n=i[l];let d,p,c=-1,b=0;for(;b<n.length&&(r.lastIndex=b,p=r.exec(n),p!==null);)b=r.lastIndex,r===W?p[1]==="!--"?r=xe:p[1]!==void 0?r=ke:p[2]!==void 0?(Se.test(p[2])&&(s=RegExp("</"+p[2],"g")),r=E):p[3]!==void 0&&(r=E):r===E?p[0]===">"?(r=s??W,c=-1):p[1]===void 0?c=-2:(c=r.lastIndex-p[2].length,d=p[1],r=p[3]===void 0?E:p[3]==='"'?Te:$e):r===Te||r===$e?r=E:r===xe||r===ke?r=W:(r=E,s=void 0);const _=r===E&&i[l+1].startsWith("/>")?" ":"";a+=r===W?n+Je:c>=0?(o.push(d),n.slice(0,c)+ve+n.slice(c)+$+_):n+$+(c===-2?l:_)}return[De(i,a+(i[t]||"<?>")+(e===2?"</svg>":e===3?"</math>":"")),o]};class V{constructor({strings:e,_$litType$:t},o){let s;this.parts=[];let a=0,r=0;const l=e.length-1,n=this.parts,[d,p]=et(e,t);if(this.el=V.createElement(d,o),I.currentNode=this.el.content,t===2||t===3){const c=this.el.content.firstChild;c.replaceWith(...c.childNodes)}for(;(s=I.nextNode())!==null&&n.length<l;){if(s.nodeType===1){if(s.hasAttributes())for(const c of s.getAttributeNames())if(c.endsWith(ve)){const b=p[r++],_=s.getAttribute(c).split($),A=/([.?@])?(.*)/.exec(b);n.push({type:1,index:a,name:A[2],strings:_,ctor:A[1]==="."?ot:A[1]==="?"?st:A[1]==="@"?it:Z}),s.removeAttribute(c)}else c.startsWith($)&&(n.push({type:6,index:a}),s.removeAttribute(c));if(Se.test(s.tagName)){const c=s.textContent.split($),b=c.length-1;if(b>0){s.textContent=X?X.emptyScript:"";for(let _=0;_<b;_++)s.append(c[_],N()),I.nextNode(),n.push({type:2,index:++a});s.append(c[b],N())}}}else if(s.nodeType===8)if(s.data===ye)n.push({type:2,index:a});else{let c=-1;for(;(c=s.data.indexOf($,c+1))!==-1;)n.push({type:7,index:a}),c+=$.length-1}a++}}static createElement(e,t){const o=M.createElement("template");return o.innerHTML=e,o}}function R(i,e,t=i,o){if(e===P)return e;let s=o!==void 0?t._$Co?.[o]:t._$Cl;const a=j(e)?void 0:e._$litDirective$;return s?.constructor!==a&&(s?._$AO?.(!1),a===void 0?s=void 0:(s=new a(i),s._$AT(i,t,o)),o!==void 0?(t._$Co??(t._$Co=[]))[o]=s:t._$Cl=s),s!==void 0&&(e=R(i,s._$AS(i,e.values),s,o)),e}class tt{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){const{el:{content:t},parts:o}=this._$AD,s=(e?.creationScope??M).importNode(t,!0);I.currentNode=s;let a=I.nextNode(),r=0,l=0,n=o[0];for(;n!==void 0;){if(r===n.index){let d;n.type===2?d=new q(a,a.nextSibling,this,e):n.type===1?d=new n.ctor(a,n.name,n.strings,this,e):n.type===6&&(d=new at(a,this,e)),this._$AV.push(d),n=o[++l]}r!==n?.index&&(a=I.nextNode(),r++)}return I.currentNode=M,s}p(e){let t=0;for(const o of this._$AV)o!==void 0&&(o.strings!==void 0?(o._$AI(e,o,t),t+=o.strings.length-2):o._$AI(e[t])),t++}}class q{get _$AU(){return this._$AM?._$AU??this._$Cv}constructor(e,t,o,s){this.type=2,this._$AH=g,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=o,this.options=s,this._$Cv=s?.isConnected??!0}get parentNode(){let e=this._$AA.parentNode;const t=this._$AM;return t!==void 0&&e?.nodeType===11&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=R(this,e,t),j(e)?e===g||e==null||e===""?(this._$AH!==g&&this._$AR(),this._$AH=g):e!==this._$AH&&e!==P&&this._(e):e._$litType$!==void 0?this.$(e):e.nodeType!==void 0?this.T(e):Qe(e)?this.k(e):this._(e)}O(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}T(e){this._$AH!==e&&(this._$AR(),this._$AH=this.O(e))}_(e){this._$AH!==g&&j(this._$AH)?this._$AA.nextSibling.data=e:this.T(M.createTextNode(e)),this._$AH=e}$(e){const{values:t,_$litType$:o}=e,s=typeof o=="number"?this._$AC(e):(o.el===void 0&&(o.el=V.createElement(De(o.h,o.h[0]),this.options)),o);if(this._$AH?._$AD===s)this._$AH.p(t);else{const a=new tt(s,this),r=a.u(this.options);a.p(t),this.T(r),this._$AH=a}}_$AC(e){let t=Ce.get(e.strings);return t===void 0&&Ce.set(e.strings,t=new V(e)),t}k(e){le(this._$AH)||(this._$AH=[],this._$AR());const t=this._$AH;let o,s=0;for(const a of e)s===t.length?t.push(o=new q(this.O(N()),this.O(N()),this,this.options)):o=t[s],o._$AI(a),s++;s<t.length&&(this._$AR(o&&o._$AB.nextSibling,s),t.length=s)}_$AR(e=this._$AA.nextSibling,t){for(this._$AP?.(!1,!0,t);e!==this._$AB;){const o=_e(e).nextSibling;_e(e).remove(),e=o}}setConnected(e){this._$AM===void 0&&(this._$Cv=e,this._$AP?.(e))}}class Z{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(e,t,o,s,a){this.type=1,this._$AH=g,this._$AN=void 0,this.element=e,this.name=t,this._$AM=s,this.options=a,o.length>2||o[0]!==""||o[1]!==""?(this._$AH=Array(o.length-1).fill(new String),this.strings=o):this._$AH=g}_$AI(e,t=this,o,s){const a=this.strings;let r=!1;if(a===void 0)e=R(this,e,t,0),r=!j(e)||e!==this._$AH&&e!==P,r&&(this._$AH=e);else{const l=e;let n,d;for(e=a[0],n=0;n<a.length-1;n++)d=R(this,l[o+n],t,n),d===P&&(d=this._$AH[n]),r||(r=!j(d)||d!==this._$AH[n]),d===g?e=g:e!==g&&(e+=(d??"")+a[n+1]),this._$AH[n]=d}r&&!s&&this.j(e)}j(e){e===g?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,e??"")}}class ot extends Z{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===g?void 0:e}}class st extends Z{constructor(){super(...arguments),this.type=4}j(e){this.element.toggleAttribute(this.name,!!e&&e!==g)}}class it extends Z{constructor(e,t,o,s,a){super(e,t,o,s,a),this.type=5}_$AI(e,t=this){if((e=R(this,e,t,0)??g)===P)return;const o=this._$AH,s=e===g&&o!==g||e.capture!==o.capture||e.once!==o.once||e.passive!==o.passive,a=e!==g&&(o===g||s);s&&this.element.removeEventListener(this.name,this,o),a&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){typeof this._$AH=="function"?this._$AH.call(this.options?.host??this.element,e):this._$AH.handleEvent(e)}}class at{constructor(e,t,o){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=o}get _$AU(){return this._$AM._$AU}_$AI(e){R(this,e)}}const rt=U.litHtmlPolyfillSupport;rt?.(V,q),(U.litHtmlVersions??(U.litHtmlVersions=[])).push("3.3.2");const nt=(i,e,t)=>{const o=t?.renderBefore??e;let s=o._$litPart$;if(s===void 0){const a=t?.renderBefore??null;o._$litPart$=s=new q(e.insertBefore(N(),a),a,void 0,t??{})}return s._$AI(i),s};/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const K=globalThis;let T=class extends P{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t;const e=super.createRenderRoot();return(t=this.renderOptions).renderBefore??(t.renderBefore=e.firstChild),e}update(e){const t=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(e),this._$Do=nt(t,this.renderRoot,this.renderOptions)}connectedCallback(){super.connectedCallback(),this._$Do?.setConnected(!0)}disconnectedCallback(){super.disconnectedCallback(),this._$Do?.setConnected(!1)}render(){return z}};T._$litElement$=!0,T.finalized=!0,K.litElementHydrateSupport?.({LitElement:T});const lt=K.litElementPolyfillSupport;lt?.({LitElement:T}),(K.litElementVersions??(K.litElementVersions=[])).push("4.2.2");const ct=M`
+ */const K=globalThis;let T=class extends z{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t;const e=super.createRenderRoot();return(t=this.renderOptions).renderBefore??(t.renderBefore=e.firstChild),e}update(e){const t=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(e),this._$Do=nt(t,this.renderRoot,this.renderOptions)}connectedCallback(){super.connectedCallback(),this._$Do?.setConnected(!0)}disconnectedCallback(){super.disconnectedCallback(),this._$Do?.setConnected(!1)}render(){return P}};T._$litElement$=!0,T.finalized=!0,K.litElementHydrateSupport?.({LitElement:T});const lt=K.litElementPolyfillSupport;lt?.({LitElement:T}),(K.litElementVersions??(K.litElementVersions=[])).push("4.2.2");const ct=D`
   :host {
     --swt-color-primary: #c0392b;
     --swt-color-primary-hover: #e74c3c;
@@ -401,7 +401,7 @@ var SourceWorkTool=(function(h){"use strict";/**
     border-color: var(--swt-color-primary);
     font-weight: 600;
   }
-`,ht=":";function F(i,...e){if(!i)throw new Error("buildCompositeKey: moduleId must be a non-empty string");return[i,...e].join(ht)}const R={Swt:"swt",Selection:"selection"},dt={SourceDetail:"swt:sourceDetail"},J={Reusable:"reusable",SingleUse:"singleUse"};class pt{constructor(e={}){this._locked=!1,this._frozen=[],this._blockOutside=t=>{const o=this._options.allow?.();if(o){const s=Array.isArray(o)?o:[o],r=t.composedPath();if(s.some(a=>a&&r.includes(a)))return}t.preventDefault()},this._options=e}get locked(){return this._locked}lock(){this.set(!0)}unlock(){this.set(!1)}set(e){if(typeof document>"u"||this._locked===e)return;this._locked=e,document.documentElement.style.overflow=e?"hidden":"",document.body.style.overflow=e?"hidden":"",document.body.style.touchAction=e?"none":"",e?this._freezeAncestors():this._thawAncestors();const t={capture:!0,passive:!1};e?(window.addEventListener("wheel",this._blockOutside,t),window.addEventListener("touchmove",this._blockOutside,t)):(window.removeEventListener("wheel",this._blockOutside,t),window.removeEventListener("touchmove",this._blockOutside,t))}_freezeAncestors(){let e=this._options.from?.()??null;for(;e&&e!==document.body;){const t=getComputedStyle(e);if(/(auto|scroll)/.test(t.overflowY)||/(auto|scroll)/.test(t.overflowX)){const o=e;this._frozen.push({el:o,overflow:o.style.overflow,touchAction:o.style.touchAction}),o.style.overflow="hidden",o.style.touchAction="none"}e=e.parentElement}}_thawAncestors(){for(const{el:e,overflow:t,touchAction:o}of this._frozen)e.style.overflow=t,e.style.touchAction=o;this._frozen=[]}}const gt=M`
+`,ht=":";function F(i,...e){if(!i)throw new Error("buildCompositeKey: moduleId must be a non-empty string");return[i,...e].join(ht)}const B={Swt:"swt",Selection:"selection"},dt={SourceDetail:"swt:sourceDetail"},J={Reusable:"reusable",SingleUse:"singleUse"};class pt{constructor(e={}){this._locked=!1,this._frozen=[],this._blockOutside=t=>{const o=this._options.allow?.();if(o){const s=Array.isArray(o)?o:[o],a=t.composedPath();if(s.some(r=>r&&a.includes(r)))return}t.preventDefault()},this._options=e}get locked(){return this._locked}lock(){this.set(!0)}unlock(){this.set(!1)}set(e){if(typeof document>"u"||this._locked===e)return;this._locked=e,document.documentElement.style.overflow=e?"hidden":"",document.body.style.overflow=e?"hidden":"",document.body.style.touchAction=e?"none":"",e?this._freezeAncestors():this._thawAncestors();const t={capture:!0,passive:!1};e?(window.addEventListener("wheel",this._blockOutside,t),window.addEventListener("touchmove",this._blockOutside,t)):(window.removeEventListener("wheel",this._blockOutside,t),window.removeEventListener("touchmove",this._blockOutside,t))}_freezeAncestors(){let e=this._options.from?.()??null;for(;e&&e!==document.body;){const t=getComputedStyle(e);if(/(auto|scroll)/.test(t.overflowY)||/(auto|scroll)/.test(t.overflowX)){const o=e;this._frozen.push({el:o,overflow:o.style.overflow,touchAction:o.style.touchAction}),o.style.overflow="hidden",o.style.touchAction="none"}e=e.parentElement}}_thawAncestors(){for(const{el:e,overflow:t,touchAction:o}of this._frozen)e.style.overflow=t,e.style.touchAction=o;this._frozen=[]}}const gt=D`
   :host {
     /* $color-primary */
     --hl-color-primary: #5352a6;
@@ -429,7 +429,7 @@ var SourceWorkTool=(function(h){"use strict";/**
     --hl-color-shadow: rgba(28, 19, 18, 0.5);
     --hl-font-family: 'Lato', Helvetica, Arial, sans-serif;
   }
-`,ut="(max-width: 720px)",ft=M`
+`,ut="(max-width: 720px)",ft=D`
   :host {
     --hl-sheet-max-h: 95dvh;
     --hl-sheet-radius: 18px;
@@ -455,7 +455,7 @@ var SourceWorkTool=(function(h){"use strict";/**
        which turns the fade grey. Keep in sync with --hl-sheet-surface. */
     --hl-sheet-surface-fade: hsla(2, 19%, 56%, 0);
   }
-`,mt=M`
+`,bt=D`
   /* ── Surface ──────────────────────────────────────────────────────────────
      Anchored to the bottom edge; the gap left above it is the real backdrop.
      'inset'/'margin' matter only when the sheet IS the <dialog> (the UA stylesheet centres
@@ -589,7 +589,7 @@ var SourceWorkTool=(function(h){"use strict";/**
     overflow: hidden;
   }
 
-  /* ── Close button — an outlined circle with a CSS-drawn × ── */
+  /* ── Close button — a bare CSS-drawn ×, no ring ── */
   :host([compact]) .hl-sheet__close {
     /* must stay positioned: the ::before/::after strokes drawing the × are absolute and
        would otherwise resolve against the nearest positioned ancestor */
@@ -606,8 +606,10 @@ var SourceWorkTool=(function(h){"use strict";/**
     width: var(--hl-sheet-touch-target);
     height: var(--hl-sheet-touch-target);
     padding: 0;
-    /* darker than the surface, which is too faint against the light header band */
-    border: 2px solid var(--hl-color-bg-dark, #a47b79);
+    /* No ring: the glyph alone is the button in both tools. The box keeps
+       --hl-sheet-touch-target so the target stays 44px even though nothing draws it, and the
+       radius is left for the hover fill and the focus outline to follow. */
+    border: none;
     border-radius: 50%;
     background: transparent;
     cursor: pointer;
@@ -634,8 +636,9 @@ var SourceWorkTool=(function(h){"use strict";/**
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 
-  /* Fill with the outline colour and flip the × light. :active as well, for touch devices
-     that have no hover state. */
+  /* Press state: a disc in the × own colour, with the strokes flipped light. It is the only
+     feedback left now that there is no ring to recolour. :active as well — and above all —
+     for touch devices, which have no hover. */
   :host([compact]) .hl-sheet__close:hover,
   :host([compact]) .hl-sheet__close:active {
     background: var(--hl-color-bg-dark, #a47b79);
@@ -821,7 +824,7 @@ var SourceWorkTool=(function(h){"use strict";/**
       transition-duration: 1ms;
     }
   }
-`;var De=(i=>(i.Text="userText",i.Tag="tag",i.Comic="comic",i.Mark="mark",i.Draw="draw",i.DescribeDetail="describeDetail",i))(De||{}),Ee=(i=>(i.Selection="selection",i.UserText="userText",i))(Ee||{}),O=(i=>(i.None="none",i.Warn="warn",i.Error="error",i))(O||{});const he={cs:{placeholder:"Vyberte oblast pro zobrazení detailu.",tagAssignedElsewhere:"Již přiřazeno — vyberte jiný atribut, nebo tento odeberte z předchozího přiřazení."},en:{placeholder:"Select a region to view the detail.",tagAssignedElsewhere:"Already assigned — pick a different one, or remove it from the previous assignment."},sk:{placeholder:"Vyberte oblasť pre zobrazenie detailu.",tagAssignedElsewhere:"Už je priradené — vyberte iný atribút, alebo tento odoberte z predchádzajúceho priradenia."},pl:{placeholder:"Wybierz obszar, aby zobaczyć szczegóły.",tagAssignedElsewhere:"Już przypisano — wybierz inny atrybut lub usuń go z poprzedniego przypisania."}};function bt(i,e){return((i&&he[i])??he.cs)[e]??he.cs[e]??""}const _t={source:"",sourceDetails:[],functions:[],debug:!1};y`
+`;var Me=(i=>(i.Text="userText",i.Tag="tag",i.Comic="comic",i.Mark="mark",i.Draw="draw",i.DescribeDetail="describeDetail",i))(Me||{}),Ee=(i=>(i.Selection="selection",i.UserText="userText",i))(Ee||{}),O=(i=>(i.None="none",i.Warn="warn",i.Error="error",i))(O||{});const he={cs:{placeholder:"Vyberte oblast pro zobrazení detailu.",tagAssignedElsewhere:"Již přiřazeno — vyberte jiný atribut, nebo tento odeberte z předchozího přiřazení."},en:{placeholder:"Select a region to view the detail.",tagAssignedElsewhere:"Already assigned — pick a different one, or remove it from the previous assignment."},sk:{placeholder:"Vyberte oblasť pre zobrazenie detailu.",tagAssignedElsewhere:"Už je priradené — vyberte iný atribút, alebo tento odoberte z predchádzajúceho priradenia."},pl:{placeholder:"Wybierz obszar, aby zobaczyć szczegóły.",tagAssignedElsewhere:"Już przypisano — wybierz inny atrybut lub usuń go z poprzedniego przypisania."}};function mt(i,e){return((i&&he[i])??he.cs)[e]??he.cs[e]??""}const _t={source:"",sourceDetails:[],functions:[],debug:!1};y`
   <!-- dashed border rectangle -->
  <rect
   x="2" y="2" width="86" height="86" rx="6"
@@ -1107,8 +1110,8 @@ var SourceWorkTool=(function(h){"use strict";/**
       ry="170.08"
     />
   </g>
-`;var v=(i=>(i.New="new",i.Done="done",i.Warn="warn",i.Error="error",i.ViewOnly="viewOnly",i))(v||{});function Ie(i,e){if(e.viewOnly)return{iconState:"viewOnly",collidingTagIds:[]};const o=i.userData.sourceDetails.find(a=>a.id===e.id)?.selectedTags??[];if(o.length===0)return{iconState:"new",collidingTagIds:[]};const s=e.colisionMode??O.None;if(s===O.None)return{iconState:"done",collidingTagIds:[]};const r=new Set;for(const a of i.userData.sourceDetails){if(a.id===e.id)continue;const l=i.sourceDetails.find(n=>n.id===a.id);if(l&&l.selectionId===e.selectionId)for(const n of a.selectedTags)o.includes(n)&&r.add(n)}return r.size===0?{iconState:"done",collidingTagIds:[]}:{iconState:s===O.Error?"error":"warn",collidingTagIds:Array.from(r)}}function $t(i,e){return Ie(i,e).iconState}function Tt(i,e){const t=i.userData.sourceDetails.find(s=>s.id===e.id)?.selectedTags??[],o=i.selections.find(s=>s.id===e.selectionId);return t.map(s=>o?.tags.find(r=>r.id===s)?.value??s)}function St(i,e){if(e.dependencyLinks.length===0)return[];const t=(r,a)=>r.configuration.sourceDetails.find(n=>F(r.moduleId,n.id)===a||n.id===a)?.selectionId??r.configuration.sourceDetailsSettings?.selectionId,o=(r,a,l)=>{const n=t(r,a);return n?(i.dependencyData??[]).find(p=>p.moduleType===R.Selection&&p.moduleId===n)?.configuration.tags.find(p=>p.id===l)?.value:void 0},s=[];for(const r of e.dependencyLinks)for(const a of(i.dependencyData??[]).filter(l=>l.moduleType===R.Swt)){const l=a.userData.sourceDetails.find(n=>n.id===r);if(l)for(const n of l.selectedTags)s.push(o(a,l.id,n.tagId)??n.tagId)}return s}function At(i,e,t){return i.sourceDetails.map(o=>Ct({uiModel:i,item:o,onSelect:e,onKeydown:t}))}function Ct(i){const{uiModel:e,item:t,onSelect:o,onKeydown:s}=i,r=Number(t.position?.x??0),a=Number(t.position?.y??0),l=60,n=$t(e,t),d=n===v.ViewOnly,p={[v.New]:wt,[v.Done]:vt,[v.Warn]:yt,[v.Error]:xt,[v.ViewOnly]:kt};return y`
-    <g transform=${`translate(${r} ${a})`}>
+`;var v=(i=>(i.New="new",i.Done="done",i.Warn="warn",i.Error="error",i.ViewOnly="viewOnly",i))(v||{});function Ie(i,e){if(e.viewOnly)return{iconState:"viewOnly",collidingTagIds:[]};const o=i.userData.sourceDetails.find(r=>r.id===e.id)?.selectedTags??[];if(o.length===0)return{iconState:"new",collidingTagIds:[]};const s=e.colisionMode??O.None;if(s===O.None)return{iconState:"done",collidingTagIds:[]};const a=new Set;for(const r of i.userData.sourceDetails){if(r.id===e.id)continue;const l=i.sourceDetails.find(n=>n.id===r.id);if(l&&l.selectionId===e.selectionId)for(const n of r.selectedTags)o.includes(n)&&a.add(n)}return a.size===0?{iconState:"done",collidingTagIds:[]}:{iconState:s===O.Error?"error":"warn",collidingTagIds:Array.from(a)}}function $t(i,e){return Ie(i,e).iconState}function Tt(i,e){const t=i.userData.sourceDetails.find(s=>s.id===e.id)?.selectedTags??[],o=i.selections.find(s=>s.id===e.selectionId);return t.map(s=>o?.tags.find(a=>a.id===s)?.value??s)}function St(i,e){if(e.dependencyLinks.length===0)return[];const t=(a,r)=>a.configuration.sourceDetails.find(n=>F(a.moduleId,n.id)===r||n.id===r)?.selectionId??a.configuration.sourceDetailsSettings?.selectionId,o=(a,r,l)=>{const n=t(a,r);return n?(i.dependencyData??[]).find(p=>p.moduleType===B.Selection&&p.moduleId===n)?.configuration.tags.find(p=>p.id===l)?.value:void 0},s=[];for(const a of e.dependencyLinks)for(const r of(i.dependencyData??[]).filter(l=>l.moduleType===B.Swt)){const l=r.userData.sourceDetails.find(n=>n.id===a);if(l)for(const n of l.selectedTags)s.push(o(r,l.id,n.tagId)??n.tagId)}return s}function At(i,e,t){return i.sourceDetails.map(o=>Ct({uiModel:i,item:o,onSelect:e,onKeydown:t}))}function Ct(i){const{uiModel:e,item:t,onSelect:o,onKeydown:s}=i,a=Number(t.position?.x??0),r=Number(t.position?.y??0),l=60,n=$t(e,t),d=n===v.ViewOnly,p={[v.New]:wt,[v.Done]:vt,[v.Warn]:yt,[v.Error]:xt,[v.ViewOnly]:kt};return y`
+    <g transform=${`translate(${a} ${r})`}>
       <svg
         class="swt__pin ${""} ${d?"swt__pin--view-only":""}"
         x=${-30}
@@ -1138,7 +1141,7 @@ var SourceWorkTool=(function(h){"use strict";/**
           </g>
       </svg>
     </g>
-  `}const Mt=104,Dt=54,Et=272;function Oe(i,e,t,o){const s=Tt(i,e),r=St(i,e);if(s.length===0&&r.length===0)return g;const a=Number(e.position?.x??0),l=Number(e.position?.y??0),n=(e.tagBoxSide??"right")==="left",d=e.tagBoxMode==="selectedOnly"&&!e.viewOnly,{expanded:p,ghost:c}=t,m=n&&p?a-1:a+(n?-105:1),_=l-Dt/2,A=n?a-1:i.imgWidth-a-1,oe=Math.max(Mt,Math.min(Et,A)),se=["swt__tag-box",n?"swt__tag-box--left":"",d?"swt__tag-box--top-only":"",p?"swt__tag-box--expanded":"",c?"swt__tag-box--ghost":""].filter(Boolean).join(" "),ie=`left: ${m}px; top: ${_}px; --swt-tag-box-max-width: ${oe}px;`;return f`
+  `}const Dt=104,Mt=54,Et=272;function Oe(i,e,t,o){const s=Tt(i,e),a=St(i,e);if(s.length===0&&a.length===0)return g;const r=Number(e.position?.x??0),l=Number(e.position?.y??0),n=(e.tagBoxSide??"right")==="left",d=e.tagBoxMode==="selectedOnly"&&!e.viewOnly,{expanded:p,ghost:c}=t,b=n&&p?r-1:r+(n?-105:1),_=l-Mt/2,A=n?r-1:i.imgWidth-r-1,oe=Math.max(Dt,Math.min(Et,A)),se=["swt__tag-box",n?"swt__tag-box--left":"",d?"swt__tag-box--top-only":"",p?"swt__tag-box--expanded":"",c?"swt__tag-box--ghost":""].filter(Boolean).join(" "),ie=`left: ${b}px; top: ${_}px; --swt-tag-box-max-width: ${oe}px;`;return f`
     <div
       class=${se}
       style=${ie}
@@ -1151,11 +1154,11 @@ var SourceWorkTool=(function(h){"use strict";/**
             <span>${s[0]||""}</span>
           </div>`}
       ${d?g:f`<div class="swt__tag-bottom">
-            <span>${r[0]||""}</span>
+            <span>${a[0]||""}</span>
           </div>`}
     </div>
-  `}function It(i,e,t){return i.sourceDetails.map(o=>Oe(i,o,{expanded:o.id===e,ghost:o.id===e},t))}function Ot(i,e,t){if(!e)return g;const o=i.sourceDetails.find(s=>s.id===e);return o?Oe(i,o,{expanded:!0,ghost:!1},t):g}function Pt(i){const{configuration:e,uiModel:t,expandedTagBoxId:o,onStageClick:s,onSwtPointerDown:r,onSelect:a,onKeydown:l,onImgLoad:n,onModalClose:d,onTagSelect:p,onTagBoxPointerDown:c,onTagBoxEnter:m,onTagBoxLeave:_,onTagBoxClick:A}=i,oe=Math.max(t.imgWidth,1),se=Math.max(t.imgHeight,1),ie=`width: ${oe}px; height: ${se}px;`,C={onTagBoxPointerDown:c,onTagBoxEnter:m,onTagBoxLeave:_,onTagBoxClick:A};return f`
-    <div class="swt" @click=${s} @pointerdown=${r}>
+  `}function It(i,e,t){return i.sourceDetails.map(o=>Oe(i,o,{expanded:o.id===e,ghost:o.id===e},t))}function Ot(i,e,t){if(!e)return g;const o=i.sourceDetails.find(s=>s.id===e);return o?Oe(i,o,{expanded:!0,ghost:!1},t):g}function zt(i){const{configuration:e,uiModel:t,expandedTagBoxId:o,onStageClick:s,onSwtPointerDown:a,onSelect:r,onKeydown:l,onImgLoad:n,onModalClose:d,onTagSelect:p,onTagBoxPointerDown:c,onTagBoxEnter:b,onTagBoxLeave:_,onTagBoxClick:A}=i,oe=Math.max(t.imgWidth,1),se=Math.max(t.imgHeight,1),ie=`width: ${oe}px; height: ${se}px;`,C={onTagBoxPointerDown:c,onTagBoxEnter:b,onTagBoxLeave:_,onTagBoxClick:A};return f`
+    <div class="swt" @click=${s} @pointerdown=${a}>
       ${e.source?f`<img
             class="swt__bg"
             src=${e.source}
@@ -1173,7 +1176,7 @@ var SourceWorkTool=(function(h){"use strict";/**
         preserveAspectRatio="xMinYMin meet"
       >
         <g class="swt__pins">
-          ${At(t,a,l)}
+          ${At(t,r,l)}
         </g>
       </svg>
       <div class="swt__tag-layer swt__tag-layer--front" style=${ie}>
@@ -1192,7 +1195,7 @@ var SourceWorkTool=(function(h){"use strict";/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const zt={attribute:!0,type:String,converter:Y,reflect:!1,hasChanged:ne},Bt=(i=zt,e,t)=>{const{kind:o,metadata:s}=t;let r=globalThis.litPropertyMetadata.get(s);if(r===void 0&&globalThis.litPropertyMetadata.set(s,r=new Map),o==="setter"&&((i=Object.create(i)).wrapped=!0),r.set(t.name,i),o==="accessor"){const{name:a}=t;return{set(l){const n=e.get.call(this);e.set.call(this,l),this.requestUpdate(a,n,i,!0,l)},init(l){return l!==void 0&&this.C(a,void 0,i,l),l}}}if(o==="setter"){const{name:a}=t;return function(l){const n=this[a];e.call(this,l),this.requestUpdate(a,n,i,!0,l)}}throw Error("Unsupported decorator location: "+o)};function u(i){return(e,t)=>typeof t=="object"?Bt(i,e,t):((o,s,r)=>{const a=s.hasOwnProperty(r);return s.constructor.createProperty(r,o),a?Object.getOwnPropertyDescriptor(s,r):void 0})(i,e,t)}/**
+ */const Pt={attribute:!0,type:String,converter:Y,reflect:!1,hasChanged:ne},Rt=(i=Pt,e,t)=>{const{kind:o,metadata:s}=t;let a=globalThis.litPropertyMetadata.get(s);if(a===void 0&&globalThis.litPropertyMetadata.set(s,a=new Map),o==="setter"&&((i=Object.create(i)).wrapped=!0),a.set(t.name,i),o==="accessor"){const{name:r}=t;return{set(l){const n=e.get.call(this);e.set.call(this,l),this.requestUpdate(r,n,i,!0,l)},init(l){return l!==void 0&&this.C(r,void 0,i,l),l}}}if(o==="setter"){const{name:r}=t;return function(l){const n=this[r];e.call(this,l),this.requestUpdate(r,n,i,!0,l)}}throw Error("Unsupported decorator location: "+o)};function u(i){return(e,t)=>typeof t=="object"?Rt(i,e,t):((o,s,a)=>{const r=s.hasOwnProperty(a);return s.constructor.createProperty(a,o),r?Object.getOwnPropertyDescriptor(s,a):void 0})(i,e,t)}/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
@@ -1200,7 +1203,7 @@ var SourceWorkTool=(function(h){"use strict";/**
  * @license
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */let Pe=class extends Event{constructor(e,t,o,s){super("context-request",{bubbles:!0,composed:!0}),this.context=e,this.contextTarget=t,this.callback=o,this.subscribe=s??!1}};/**
+ */let ze=class extends Event{constructor(e,t,o,s){super("context-request",{bubbles:!0,composed:!0}),this.context=e,this.contextTarget=t,this.callback=o,this.subscribe=s??!1}};/**
  * @license
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
@@ -1208,23 +1211,23 @@ var SourceWorkTool=(function(h){"use strict";/**
  * @license
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */let ze=class{constructor(e,t,o,s){if(this.subscribe=!1,this.provided=!1,this.value=void 0,this.t=(r,a)=>{this.unsubscribe&&(this.unsubscribe!==a&&(this.provided=!1,this.unsubscribe()),this.subscribe||this.unsubscribe()),this.value=r,this.host.requestUpdate(),this.provided&&!this.subscribe||(this.provided=!0,this.callback&&this.callback(r,a)),this.unsubscribe=a},this.host=e,t.context!==void 0){const r=t;this.context=r.context,this.callback=r.callback,this.subscribe=r.subscribe??!1}else this.context=t,this.callback=o,this.subscribe=s??!1;this.host.addController(this)}hostConnected(){this.dispatchRequest()}hostDisconnected(){this.unsubscribe&&(this.unsubscribe(),this.unsubscribe=void 0)}dispatchRequest(){this.host.dispatchEvent(new Pe(this.context,this.host,this.t,this.subscribe))}};/**
+ */let Pe=class{constructor(e,t,o,s){if(this.subscribe=!1,this.provided=!1,this.value=void 0,this.t=(a,r)=>{this.unsubscribe&&(this.unsubscribe!==r&&(this.provided=!1,this.unsubscribe()),this.subscribe||this.unsubscribe()),this.value=a,this.host.requestUpdate(),this.provided&&!this.subscribe||(this.provided=!0,this.callback&&this.callback(a,r)),this.unsubscribe=r},this.host=e,t.context!==void 0){const a=t;this.context=a.context,this.callback=a.callback,this.subscribe=a.subscribe??!1}else this.context=t,this.callback=o,this.subscribe=s??!1;this.host.addController(this)}hostConnected(){this.dispatchRequest()}hostDisconnected(){this.unsubscribe&&(this.unsubscribe(),this.unsubscribe=void 0)}dispatchRequest(){this.host.dispatchEvent(new ze(this.context,this.host,this.t,this.subscribe))}};/**
  * @license
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */class Rt{get value(){return this.o}set value(e){this.setValue(e)}setValue(e,t=!1){const o=t||!Object.is(e,this.o);this.o=e,o&&this.updateObservers()}constructor(e){this.subscriptions=new Map,this.updateObservers=()=>{for(const[t,{disposer:o}]of this.subscriptions)t(this.o,o)},e!==void 0&&(this.value=e)}addCallback(e,t,o){if(!o)return void e(this.value);this.subscriptions.has(e)||this.subscriptions.set(e,{disposer:()=>{this.subscriptions.delete(e)},consumerHost:t});const{disposer:s}=this.subscriptions.get(e);e(this.value,s)}clearCallbacks(){this.subscriptions.clear()}}/**
+ */class Bt{get value(){return this.o}set value(e){this.setValue(e)}setValue(e,t=!1){const o=t||!Object.is(e,this.o);this.o=e,o&&this.updateObservers()}constructor(e){this.subscriptions=new Map,this.updateObservers=()=>{for(const[t,{disposer:o}]of this.subscriptions)t(this.o,o)},e!==void 0&&(this.value=e)}addCallback(e,t,o){if(!o)return void e(this.value);this.subscriptions.has(e)||this.subscriptions.set(e,{disposer:()=>{this.subscriptions.delete(e)},consumerHost:t});const{disposer:s}=this.subscriptions.get(e);e(this.value,s)}clearCallbacks(){this.subscriptions.clear()}}/**
  * @license
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */let Lt=class extends Event{constructor(e,t){super("context-provider",{bubbles:!0,composed:!0}),this.context=e,this.contextTarget=t}};class Be extends Rt{constructor(e,t,o){super(t.context!==void 0?t.initialValue:o),this.onContextRequest=s=>{if(s.context!==this.context)return;const r=s.contextTarget??s.composedPath()[0];r!==this.host&&(s.stopPropagation(),this.addCallback(s.callback,r,s.subscribe))},this.onProviderRequest=s=>{if(s.context!==this.context||(s.contextTarget??s.composedPath()[0])===this.host)return;const r=new Set;for(const[a,{consumerHost:l}]of this.subscriptions)r.has(a)||(r.add(a),l.dispatchEvent(new Pe(this.context,l,a,!0)));s.stopPropagation()},this.host=e,t.context!==void 0?this.context=t.context:this.context=t,this.attachListeners(),this.host.addController?.(this)}attachListeners(){this.host.addEventListener("context-request",this.onContextRequest),this.host.addEventListener("context-provider",this.onProviderRequest)}hostConnected(){this.host.dispatchEvent(new Lt(this.context,this.host))}}/**
+ */let Lt=class extends Event{constructor(e,t){super("context-provider",{bubbles:!0,composed:!0}),this.context=e,this.contextTarget=t}};class Re extends Bt{constructor(e,t,o){super(t.context!==void 0?t.initialValue:o),this.onContextRequest=s=>{if(s.context!==this.context)return;const a=s.contextTarget??s.composedPath()[0];a!==this.host&&(s.stopPropagation(),this.addCallback(s.callback,a,s.subscribe))},this.onProviderRequest=s=>{if(s.context!==this.context||(s.contextTarget??s.composedPath()[0])===this.host)return;const a=new Set;for(const[r,{consumerHost:l}]of this.subscriptions)a.has(r)||(a.add(r),l.dispatchEvent(new ze(this.context,l,r,!0)));s.stopPropagation()},this.host=e,t.context!==void 0?this.context=t.context:this.context=t,this.attachListeners(),this.host.addController?.(this)}attachListeners(){this.host.addEventListener("context-request",this.onContextRequest),this.host.addEventListener("context-provider",this.onProviderRequest)}hostConnected(){this.host.dispatchEvent(new Lt(this.context,this.host))}}/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */function Ut({context:i}){return(e,t)=>{const o=new WeakMap;if(typeof t=="object")return{get(){return e.get.call(this)},set(s){return o.get(this).setValue(s),e.set.call(this,s)},init(s){return o.set(this,new Be(this,{context:i,initialValue:s})),s}};{e.constructor.addInitializer((a=>{o.set(a,new Be(a,{context:i}))}));const s=Object.getOwnPropertyDescriptor(e,t);let r;if(s===void 0){const a=new WeakMap;r={get(){return a.get(this)},set(l){o.get(this).setValue(l),a.set(this,l)},configurable:!0,enumerable:!0}}else{const a=s.set;r={...s,set(l){o.get(this).setValue(l),a?.call(this,l)}}}return void Object.defineProperty(e,t,r)}}}/**
+ */function Ht({context:i}){return(e,t)=>{const o=new WeakMap;if(typeof t=="object")return{get(){return e.get.call(this)},set(s){return o.get(this).setValue(s),e.set.call(this,s)},init(s){return o.set(this,new Re(this,{context:i,initialValue:s})),s}};{e.constructor.addInitializer((r=>{o.set(r,new Re(r,{context:i}))}));const s=Object.getOwnPropertyDescriptor(e,t);let a;if(s===void 0){const r=new WeakMap;a={get(){return r.get(this)},set(l){o.get(this).setValue(l),r.set(this,l)},configurable:!0,enumerable:!0}}else{const r=s.set;a={...s,set(l){o.get(this).setValue(l),r?.call(this,l)}}}return void Object.defineProperty(e,t,a)}}}/**
  * @license
  * Copyright 2022 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */function Ht({context:i,subscribe:e}){return(t,o)=>{typeof o=="object"?o.addInitializer((function(){new ze(this,{context:i,callback:s=>{t.set.call(this,s)},subscribe:e})})):t.constructor.addInitializer((s=>{new ze(s,{context:i,callback:r=>{s[o]=r},subscribe:e})}))}}const Re="swt-ui-model-context";class L{constructor(e){this.id=e.id,this.selectedTags=[...e.selectedTags]}hasTag(e){return this.selectedTags.includes(e)}addTag(e){return this.hasTag(e)?this:new L({id:this.id,selectedTags:[...this.selectedTags,e]})}removeTag(e){return this.hasTag(e)?new L({id:this.id,selectedTags:this.selectedTags.filter(t=>t!==e)}):this}}class te{constructor(e,t){this.id=F(t,e.id),this.source=e.source,this.position=e.position,this.name=e.name,this.type=e.type,this.selectionId=e.selectionId,this.colisionMode=e.colisionMode,this.dependencyLinks=te.toCompositeKeys(e.dependencyLinks),this.tagBoxSide=e.tagBoxSide??"right",this.tagBoxMode=e.tagBoxMode??"both",this.viewOnly=e.viewOnly??!1}static toCompositeKeys(e){return(e??[]).map(t=>F(t.moduleId,t.sourceDetailId))}getDependencyLinksCompositeKeys(){return this.dependencyLinks??[]}}class Nt{constructor(e){this.id=e.moduleId,this.tags=e.configuration.tags,this.mode=e.configuration.mode,this.maxSelectedTags=e.configuration.maxSelectedTags??0,this.highlightSelectedTags=e.configuration.highlightSelectedTags??!1,this.enforceSingleUse=e.configuration.enforceSingleUse??!1,this.singleUseMessage=e.configuration.singleUseMessage}}function Le(i){return i?.mode===J.SingleUse&&i.enforceSingleUse===!0}function Ue(i,e){if(!e.selectionId)return[];const t=new Set;for(const o of i.userData.sourceDetails){if(o.id===e.id)continue;const s=i.sourceDetails.find(r=>r.id===o.id);if(s&&s.selectionId===e.selectionId)for(const r of o.selectedTags)t.add(r)}return Array.from(t)}function jt(i,e,t){return Ue(i,e).includes(t)}var Wt=Object.defineProperty,Vt=Object.getOwnPropertyDescriptor,S=(i,e,t,o)=>{for(var s=o>1?void 0:o?Vt(e,t):e,r=i.length-1,a;r>=0;r--)(a=i[r])&&(s=(o?a(e,t,s):a(s))||s);return o&&s&&Wt(e,t,s),s};h.SourceWorkTool=class extends T{constructor(){super(),this.exportVersion=1,this._stageScale=0,this._expandedTagBoxId=null,this._lastPointerType="mouse",this.configuration={..._t},this.dependencyData=[],this.userData={},this.lang="cs",this.readOnly=!1,this._uiModel={...h.SourceWorkTool._EMPTY_UI_MODEL},this._rebuildRecords()}connectedCallback(){super.connectedCallback(),typeof ResizeObserver<"u"&&(this._stageResizeObs=new ResizeObserver(()=>this._syncStageScale()))}disconnectedCallback(){this._stageResizeObs?.disconnect(),this._observedStage=void 0,this._clearCollapseTimer(),super.disconnectedCallback()}_clearCollapseTimer(){this._collapseTimer!==void 0&&(clearTimeout(this._collapseTimer),this._collapseTimer=void 0)}_expandTagBox(e){this._clearCollapseTimer(),this._expandedTagBoxId=e}_collapseTagBox(){this._clearCollapseTimer(),this._expandedTagBoxId=null}_handleTagBoxPointerDown(e){this._lastPointerType=e.pointerType}_handleTagBoxEnter(e,t){e.pointerType!=="touch"&&this._expandTagBox(t)}_handleTagBoxLeave(e,t){e.pointerType!=="touch"&&this._expandedTagBoxId===t&&(this._clearCollapseTimer(),this._collapseTimer=setTimeout(()=>{this._collapseTimer=void 0,this._expandedTagBoxId===t&&(this._expandedTagBoxId=null)},h.SourceWorkTool.COLLAPSE_DELAY_MS))}_handleTagBoxClick(e){this._lastPointerType==="touch"&&(this._expandedTagBoxId===e?this._collapseTagBox():this._expandTagBox(e))}_handleSwtPointerDown(e){e.pointerType==="mouse"||this._expandedTagBoxId===null||e.composedPath().some(o=>o instanceof HTMLElement&&o.classList.contains("swt__tag-box"))||this._collapseTagBox()}_setUiModel(e){this._uiModel={...this._uiModel,...e}}_rebuildRecords(){const e=this.configuration.moduleId??"local",t=this.configuration.sourceDetailsSettings,o=this.configuration.sourceDetails.map(r=>{if(!t)return new te({...r,colisionMode:r.colisionMode??O.None},e);const a={...r,name:r.name??t.name,type:r.type??t.type,selectionId:r.selectionId??t.selectionId,tagBoxMode:r.tagBoxMode??t.tagBoxMode,colisionMode:r.colisionMode??t.colisionMode??O.None};return new te(a,e)}),s=(this.dependencyData??[]).filter(r=>r.moduleType===R.Selection).map(r=>new Nt(r));this._uiModel={...this._uiModel,sourceDetailsSettings:this.configuration.sourceDetailsSettings,selections:s,sourceDetails:o,dependencyData:this.dependencyData??[]}}_handleSelect(e){const t=this._uiModel.selectedId===e?null:e;this._collapseTagBox(),this._setUiModel({selectedId:t,modalOpen:t!==null})}_handleKeydown(e,t){(e.key==="Enter"||e.key===" ")&&(e.preventDefault(),this._handleSelect(t))}_handleModalClose(){this._setUiModel({selectedId:null,modalOpen:!1}),this.dispatchEvent(new CustomEvent("swt:change",{bubbles:!0,composed:!0,detail:{exportModule:this.exportModule()}}))}_handleTagSelect(e){const t=this._uiModel.selectedId;if(!t)return;const s=this._uiModel.userData.sourceDetails.find(m=>m.id===t)??new L({id:t,selectedTags:[]}),r=s.selectedTags,a=r.includes(e),l=this._uiModel.sourceDetails.find(m=>m.id===t),n=this._uiModel.selections.find(m=>m.id===l?.selectionId),d=n?.maxSelectedTags;let p;if(a)p=s.removeTag(e);else{if(Le(n)&&l&&jt(this._uiModel,l,e))return;d===1?p=new L({id:t,selectedTags:[e]}):typeof d=="number"&&d>0&&r.length>=d?p=s:p=s.addTag(e)}const c=this._uiModel.userData.sourceDetails.filter(m=>m.id!==t);p.selectedTags.length>0&&c.push(p),this._setUiModel({userData:{sourceDetails:c}})}_updateResponsiveMaxWidth(e,t){if(e<=0||t<=0)return;const o=e/t,r=(Math.min(.9,Math.max(.45,o))-.45)/(.9-.45),a=Math.round(15+r*10);this.style.setProperty("--swt-max-width-units",String(a))}_handleImgLoad(e){const t=e.target;this._updateResponsiveMaxWidth(t.naturalWidth,t.naturalHeight),this._setUiModel({imgWidth:t.naturalWidth,imgHeight:t.naturalHeight})}_handleStageClick(e){if(!this.configuration.debug||this._uiModel.modalOpen)return;console.log("[SWT debug] Stage click event:",e);const t=this.renderRoot.querySelector(".swt__stage");if(!t)return;const o=t.getScreenCTM();if(!o)return;const s=t.createSVGPoint();s.x=e.clientX,s.y=e.clientY;const r=s.matrixTransform(o.inverse()),a=Math.round(r.x),l=Math.round(r.y);console.log("[SWT debug] SVG click:",{x:a,y:l})}_syncStageScale(){const e=this.renderRoot.querySelector(".swt__stage"),t=this._uiModel.imgWidth;if(!e||t<=0)return;const o=e.getBoundingClientRect().width;if(o<=0)return;const s=o/t;s!==this._stageScale&&(this._stageScale=s,this.style.setProperty("--swt-stage-scale",String(s)))}updated(){const e=this.renderRoot.querySelector(".swt__stage");if(e&&this._stageResizeObs&&this._observedStage!==e&&(this._observedStage&&this._stageResizeObs.unobserve(this._observedStage),this._stageResizeObs.observe(e),this._observedStage=e),this._syncStageScale(),this._uiModel.imgWidth>0)return;const t=this.renderRoot.querySelector(".swt__bg");t?.complete&&t.naturalWidth>0&&(this._updateResponsiveMaxWidth(t.naturalWidth,t.naturalHeight),this._setUiModel({imgWidth:t.naturalWidth,imgHeight:t.naturalHeight}))}willUpdate(e){if(e.has("configuration")&&this._rebuildRecords(),e.has("dependencyData")&&this._setUiModel({dependencyData:this.dependencyData??[]}),e.has("userData")){const t=(this.userData?.sourceDetails??[]).map(o=>new L({id:o.id,selectedTags:o.selectedTags.map(s=>s.tagId)}));this._setUiModel({userData:{sourceDetails:t}})}e.has("readOnly")&&this._setUiModel({isReadOnly:this.readOnly}),e.has("lang")&&this._setUiModel({lang:this.lang??"cs"})}exportUserData(){return{sourceDetails:this._uiModel.userData.sourceDetails.map(t=>({id:t.id,recordType:dt.SourceDetail,selectedTags:t.selectedTags.map(o=>({tagId:o}))}))}}exportModule(){const e=this.configuration.moduleId??"local";return{version:this.exportVersion,moduleId:e,configuration:{...this.configuration},moduleType:R.Swt,updatedAt:new Date().toISOString(),userData:this.exportUserData()}}render(){return Pt({configuration:this.configuration,uiModel:this._uiModel,imgWidth:this._uiModel.imgWidth,imgHeight:this._uiModel.imgHeight,selectedId:this._uiModel.selectedId,expandedTagBoxId:this._expandedTagBoxId,onStageClick:e=>this._handleStageClick(e),onSwtPointerDown:e=>this._handleSwtPointerDown(e),onTagBoxPointerDown:e=>this._handleTagBoxPointerDown(e),onTagBoxEnter:(e,t)=>this._handleTagBoxEnter(e,t),onTagBoxLeave:(e,t)=>this._handleTagBoxLeave(e,t),onTagBoxClick:e=>this._handleTagBoxClick(e),onSelect:e=>this._handleSelect(e),onKeydown:(e,t)=>this._handleKeydown(e,t),onImgLoad:e=>this._handleImgLoad(e),onModalClose:()=>this._handleModalClose(),onTagSelect:e=>this._handleTagSelect(e)})}},h.SourceWorkTool.styles=ct,h.SourceWorkTool._EMPTY_UI_MODEL={sourceDetails:[],selections:[],dependencyData:[],isReadOnly:!1,reviewData:[],userData:{sourceDetails:[]},selectedId:null,lang:"cs",modalOpen:!1,imgWidth:0,imgHeight:0},h.SourceWorkTool.COLLAPSE_DELAY_MS=120,S([u({attribute:!1})],h.SourceWorkTool.prototype,"configuration",2),S([u({attribute:!1})],h.SourceWorkTool.prototype,"dependencyData",2),S([u({attribute:!1})],h.SourceWorkTool.prototype,"userData",2),S([u({attribute:"data-lang"})],h.SourceWorkTool.prototype,"lang",2),S([u({type:Boolean,reflect:!0})],h.SourceWorkTool.prototype,"readOnly",2),S([Ut({context:Re}),ee()],h.SourceWorkTool.prototype,"_uiModel",2),S([ee()],h.SourceWorkTool.prototype,"_expandedTagBoxId",2),h.SourceWorkTool=S([Q("source-work-tool")],h.SourceWorkTool);var qt=Object.defineProperty,Kt=Object.getOwnPropertyDescriptor,w=(i,e,t,o)=>{for(var s=o>1?void 0:o?Kt(e,t):e,r=i.length-1,a;r>=0;r--)(a=i[r])&&(s=(o?a(e,t,s):a(s))||s);return o&&s&&qt(e,t,s),s};const Gt=3e3,He=8,de=8,Ne="swt-blocked-desc";let b=class extends T{constructor(){super(...arguments),this.selection=null,this.selectedTagIds=[],this.sharedSelectedTagIds=[],this.blockedTagIds=[],this.noticeText="",this._tooltipTagId="",this.maxSelectedTags=null,this.highlightSelectedTags=!0,this.collisionState=v.New,this.collidingTagIds=[],this.isReadOnly=!1,this.compact=!1,this._anchorRect=null,this._needsPlacement=!1,this._hideTimer=null,this._onAnchorMoved=()=>this._closeTooltip()}connectedCallback(){super.connectedCallback(),window.addEventListener("resize",this._onAnchorMoved)}disconnectedCallback(){window.removeEventListener("resize",this._onAnchorMoved),this._clearHideTimer(),super.disconnectedCallback()}_clearHideTimer(){this._hideTimer!==null&&(clearTimeout(this._hideTimer),this._hideTimer=null)}_openTooltip(i,e,t=0){this._clearHideTimer(),this._anchorRect=e.getBoundingClientRect(),this._needsPlacement=!0,this._tooltipTagId=i,t>0&&(this._hideTimer=window.setTimeout(()=>this._closeTooltip(),t))}_closeTooltip(){this._clearHideTimer(),this._tooltipTagId&&(this._tooltipTagId="",this._anchorRect=null)}_blockedChip(i){if(!(i instanceof Element))return null;const e=i.closest("[data-blocked]");return e instanceof HTMLElement?e:null}_onPoolPointerOver(i){if(i.pointerType!=="mouse")return;const e=this._blockedChip(i.target);if(!e){this._tooltipTagId&&this._closeTooltip();return}const t=e.dataset.tagId??"";t&&t!==this._tooltipTagId&&this._openTooltip(t,e)}_onPoolPointerLeave(i){i.pointerType==="mouse"&&this._closeTooltip()}_onPoolPointerDown(i){if(i.pointerType==="mouse")return;const e=this._blockedChip(i.target);if(!e){this._closeTooltip();return}const t=e.dataset.tagId??"";t&&this._openTooltip(t,e,Gt)}updated(){if(!this._needsPlacement)return;const i=this.renderRoot.querySelector(".tag-selection__tooltip"),e=this._anchorRect;if(!i||!e)return;this._needsPlacement=!1,i.style.left="",i.style.top="";const{width:t,height:o}=i.getBoundingClientRect(),s=Math.max(de,Math.min(e.left+e.width/2-t/2,window.innerWidth-de-t)),r=e.top-He-o,a=r<de?e.bottom+He:r;i.style.left=`${s}px`,i.style.top=`${a}px`}_onTagClick(i){this.isReadOnly||this.dispatchEvent(new CustomEvent("swt-tag-selection:select",{detail:{tagId:i.id},bubbles:!0,composed:!0}))}_renderSelected(){const i=this.selectedTagIds.map(e=>this.selection?.tags.find(t=>t.id===e)).filter(e=>e!==void 0);return f` <div class="tag-selection__label">Vybráno</div>
+ */function Ut({context:i,subscribe:e}){return(t,o)=>{typeof o=="object"?o.addInitializer((function(){new Pe(this,{context:i,callback:s=>{t.set.call(this,s)},subscribe:e})})):t.constructor.addInitializer((s=>{new Pe(s,{context:i,callback:a=>{s[o]=a},subscribe:e})}))}}const Be="swt-ui-model-context";class L{constructor(e){this.id=e.id,this.selectedTags=[...e.selectedTags]}hasTag(e){return this.selectedTags.includes(e)}addTag(e){return this.hasTag(e)?this:new L({id:this.id,selectedTags:[...this.selectedTags,e]})}removeTag(e){return this.hasTag(e)?new L({id:this.id,selectedTags:this.selectedTags.filter(t=>t!==e)}):this}}class te{constructor(e,t){this.id=F(t,e.id),this.source=e.source,this.position=e.position,this.name=e.name,this.type=e.type,this.selectionId=e.selectionId,this.colisionMode=e.colisionMode,this.dependencyLinks=te.toCompositeKeys(e.dependencyLinks),this.tagBoxSide=e.tagBoxSide??"right",this.tagBoxMode=e.tagBoxMode??"both",this.viewOnly=e.viewOnly??!1}static toCompositeKeys(e){return(e??[]).map(t=>F(t.moduleId,t.sourceDetailId))}getDependencyLinksCompositeKeys(){return this.dependencyLinks??[]}}class Nt{constructor(e){this.id=e.moduleId,this.tags=e.configuration.tags,this.mode=e.configuration.mode,this.maxSelectedTags=e.configuration.maxSelectedTags??0,this.highlightSelectedTags=e.configuration.highlightSelectedTags??!1,this.enforceSingleUse=e.configuration.enforceSingleUse??!1,this.singleUseMessage=e.configuration.singleUseMessage}}function Le(i){return i?.mode===J.SingleUse&&i.enforceSingleUse===!0}function He(i,e){if(!e.selectionId)return[];const t=new Set;for(const o of i.userData.sourceDetails){if(o.id===e.id)continue;const s=i.sourceDetails.find(a=>a.id===o.id);if(s&&s.selectionId===e.selectionId)for(const a of o.selectedTags)t.add(a)}return Array.from(t)}function jt(i,e,t){return He(i,e).includes(t)}var Wt=Object.defineProperty,Vt=Object.getOwnPropertyDescriptor,S=(i,e,t,o)=>{for(var s=o>1?void 0:o?Vt(e,t):e,a=i.length-1,r;a>=0;a--)(r=i[a])&&(s=(o?r(e,t,s):r(s))||s);return o&&s&&Wt(e,t,s),s};h.SourceWorkTool=class extends T{constructor(){super(),this.exportVersion=1,this._stageScale=0,this._expandedTagBoxId=null,this._lastPointerType="mouse",this.configuration={..._t},this.dependencyData=[],this.userData={},this.lang="cs",this.readOnly=!1,this._uiModel={...h.SourceWorkTool._EMPTY_UI_MODEL},this._rebuildRecords()}connectedCallback(){super.connectedCallback(),typeof ResizeObserver<"u"&&(this._stageResizeObs=new ResizeObserver(()=>this._syncStageScale()))}disconnectedCallback(){this._stageResizeObs?.disconnect(),this._observedStage=void 0,this._clearCollapseTimer(),super.disconnectedCallback()}_clearCollapseTimer(){this._collapseTimer!==void 0&&(clearTimeout(this._collapseTimer),this._collapseTimer=void 0)}_expandTagBox(e){this._clearCollapseTimer(),this._expandedTagBoxId=e}_collapseTagBox(){this._clearCollapseTimer(),this._expandedTagBoxId=null}_handleTagBoxPointerDown(e){this._lastPointerType=e.pointerType}_handleTagBoxEnter(e,t){e.pointerType!=="touch"&&this._expandTagBox(t)}_handleTagBoxLeave(e,t){e.pointerType!=="touch"&&this._expandedTagBoxId===t&&(this._clearCollapseTimer(),this._collapseTimer=setTimeout(()=>{this._collapseTimer=void 0,this._expandedTagBoxId===t&&(this._expandedTagBoxId=null)},h.SourceWorkTool.COLLAPSE_DELAY_MS))}_handleTagBoxClick(e){this._lastPointerType==="touch"&&(this._expandedTagBoxId===e?this._collapseTagBox():this._expandTagBox(e))}_handleSwtPointerDown(e){e.pointerType==="mouse"||this._expandedTagBoxId===null||e.composedPath().some(o=>o instanceof HTMLElement&&o.classList.contains("swt__tag-box"))||this._collapseTagBox()}_setUiModel(e){this._uiModel={...this._uiModel,...e}}_rebuildRecords(){const e=this.configuration.moduleId??"local",t=this.configuration.sourceDetailsSettings,o=this.configuration.sourceDetails.map(a=>{if(!t)return new te({...a,colisionMode:a.colisionMode??O.None},e);const r={...a,name:a.name??t.name,type:a.type??t.type,selectionId:a.selectionId??t.selectionId,tagBoxMode:a.tagBoxMode??t.tagBoxMode,colisionMode:a.colisionMode??t.colisionMode??O.None};return new te(r,e)}),s=(this.dependencyData??[]).filter(a=>a.moduleType===B.Selection).map(a=>new Nt(a));this._uiModel={...this._uiModel,sourceDetailsSettings:this.configuration.sourceDetailsSettings,selections:s,sourceDetails:o,dependencyData:this.dependencyData??[]}}_handleSelect(e){const t=this._uiModel.selectedId===e?null:e;this._collapseTagBox(),this._setUiModel({selectedId:t,modalOpen:t!==null})}_handleKeydown(e,t){(e.key==="Enter"||e.key===" ")&&(e.preventDefault(),this._handleSelect(t))}_handleModalClose(){this._setUiModel({selectedId:null,modalOpen:!1}),this.dispatchEvent(new CustomEvent("swt:change",{bubbles:!0,composed:!0,detail:{exportModule:this.exportModule()}}))}_handleTagSelect(e){const t=this._uiModel.selectedId;if(!t)return;const s=this._uiModel.userData.sourceDetails.find(b=>b.id===t)??new L({id:t,selectedTags:[]}),a=s.selectedTags,r=a.includes(e),l=this._uiModel.sourceDetails.find(b=>b.id===t),n=this._uiModel.selections.find(b=>b.id===l?.selectionId),d=n?.maxSelectedTags;let p;if(r)p=s.removeTag(e);else{if(Le(n)&&l&&jt(this._uiModel,l,e))return;d===1?p=new L({id:t,selectedTags:[e]}):typeof d=="number"&&d>0&&a.length>=d?p=s:p=s.addTag(e)}const c=this._uiModel.userData.sourceDetails.filter(b=>b.id!==t);p.selectedTags.length>0&&c.push(p),this._setUiModel({userData:{sourceDetails:c}})}_updateResponsiveMaxWidth(e,t){if(e<=0||t<=0)return;const o=e/t,a=(Math.min(.9,Math.max(.45,o))-.45)/(.9-.45),r=Math.round(15+a*10);this.style.setProperty("--swt-max-width-units",String(r))}_handleImgLoad(e){const t=e.target;this._updateResponsiveMaxWidth(t.naturalWidth,t.naturalHeight),this._setUiModel({imgWidth:t.naturalWidth,imgHeight:t.naturalHeight})}_handleStageClick(e){if(!this.configuration.debug||this._uiModel.modalOpen)return;console.log("[SWT debug] Stage click event:",e);const t=this.renderRoot.querySelector(".swt__stage");if(!t)return;const o=t.getScreenCTM();if(!o)return;const s=t.createSVGPoint();s.x=e.clientX,s.y=e.clientY;const a=s.matrixTransform(o.inverse()),r=Math.round(a.x),l=Math.round(a.y);console.log("[SWT debug] SVG click:",{x:r,y:l})}_syncStageScale(){const e=this.renderRoot.querySelector(".swt__stage"),t=this._uiModel.imgWidth;if(!e||t<=0)return;const o=e.getBoundingClientRect().width;if(o<=0)return;const s=o/t;s!==this._stageScale&&(this._stageScale=s,this.style.setProperty("--swt-stage-scale",String(s)))}updated(){const e=this.renderRoot.querySelector(".swt__stage");if(e&&this._stageResizeObs&&this._observedStage!==e&&(this._observedStage&&this._stageResizeObs.unobserve(this._observedStage),this._stageResizeObs.observe(e),this._observedStage=e),this._syncStageScale(),this._uiModel.imgWidth>0)return;const t=this.renderRoot.querySelector(".swt__bg");t?.complete&&t.naturalWidth>0&&(this._updateResponsiveMaxWidth(t.naturalWidth,t.naturalHeight),this._setUiModel({imgWidth:t.naturalWidth,imgHeight:t.naturalHeight}))}willUpdate(e){if(e.has("configuration")&&this._rebuildRecords(),e.has("dependencyData")&&this._setUiModel({dependencyData:this.dependencyData??[]}),e.has("userData")){const t=(this.userData?.sourceDetails??[]).map(o=>new L({id:o.id,selectedTags:o.selectedTags.map(s=>s.tagId)}));this._setUiModel({userData:{sourceDetails:t}})}e.has("readOnly")&&this._setUiModel({isReadOnly:this.readOnly}),e.has("lang")&&this._setUiModel({lang:this.lang??"cs"})}exportUserData(){return{sourceDetails:this._uiModel.userData.sourceDetails.map(t=>({id:t.id,recordType:dt.SourceDetail,selectedTags:t.selectedTags.map(o=>({tagId:o}))}))}}exportModule(){const e=this.configuration.moduleId??"local";return{version:this.exportVersion,moduleId:e,configuration:{...this.configuration},moduleType:B.Swt,updatedAt:new Date().toISOString(),userData:this.exportUserData()}}render(){return zt({configuration:this.configuration,uiModel:this._uiModel,imgWidth:this._uiModel.imgWidth,imgHeight:this._uiModel.imgHeight,selectedId:this._uiModel.selectedId,expandedTagBoxId:this._expandedTagBoxId,onStageClick:e=>this._handleStageClick(e),onSwtPointerDown:e=>this._handleSwtPointerDown(e),onTagBoxPointerDown:e=>this._handleTagBoxPointerDown(e),onTagBoxEnter:(e,t)=>this._handleTagBoxEnter(e,t),onTagBoxLeave:(e,t)=>this._handleTagBoxLeave(e,t),onTagBoxClick:e=>this._handleTagBoxClick(e),onSelect:e=>this._handleSelect(e),onKeydown:(e,t)=>this._handleKeydown(e,t),onImgLoad:e=>this._handleImgLoad(e),onModalClose:()=>this._handleModalClose(),onTagSelect:e=>this._handleTagSelect(e)})}},h.SourceWorkTool.styles=ct,h.SourceWorkTool._EMPTY_UI_MODEL={sourceDetails:[],selections:[],dependencyData:[],isReadOnly:!1,reviewData:[],userData:{sourceDetails:[]},selectedId:null,lang:"cs",modalOpen:!1,imgWidth:0,imgHeight:0},h.SourceWorkTool.COLLAPSE_DELAY_MS=120,S([u({attribute:!1})],h.SourceWorkTool.prototype,"configuration",2),S([u({attribute:!1})],h.SourceWorkTool.prototype,"dependencyData",2),S([u({attribute:!1})],h.SourceWorkTool.prototype,"userData",2),S([u({attribute:"data-lang"})],h.SourceWorkTool.prototype,"lang",2),S([u({type:Boolean,reflect:!0})],h.SourceWorkTool.prototype,"readOnly",2),S([Ht({context:Be}),ee()],h.SourceWorkTool.prototype,"_uiModel",2),S([ee()],h.SourceWorkTool.prototype,"_expandedTagBoxId",2),h.SourceWorkTool=S([Q("source-work-tool")],h.SourceWorkTool);var qt=Object.defineProperty,Kt=Object.getOwnPropertyDescriptor,w=(i,e,t,o)=>{for(var s=o>1?void 0:o?Kt(e,t):e,a=i.length-1,r;a>=0;a--)(r=i[a])&&(s=(o?r(e,t,s):r(s))||s);return o&&s&&qt(e,t,s),s};const Gt=3e3,Ue=8,de=8,Ne="swt-blocked-desc";let m=class extends T{constructor(){super(...arguments),this.selection=null,this.selectedTagIds=[],this.sharedSelectedTagIds=[],this.blockedTagIds=[],this.noticeText="",this._tooltipTagId="",this.maxSelectedTags=null,this.highlightSelectedTags=!0,this.collisionState=v.New,this.collidingTagIds=[],this.isReadOnly=!1,this.compact=!1,this._anchorRect=null,this._needsPlacement=!1,this._hideTimer=null,this._onAnchorMoved=()=>this._closeTooltip()}connectedCallback(){super.connectedCallback(),window.addEventListener("resize",this._onAnchorMoved)}disconnectedCallback(){window.removeEventListener("resize",this._onAnchorMoved),this._clearHideTimer(),super.disconnectedCallback()}_clearHideTimer(){this._hideTimer!==null&&(clearTimeout(this._hideTimer),this._hideTimer=null)}_openTooltip(i,e,t=0){this._clearHideTimer(),this._anchorRect=e.getBoundingClientRect(),this._needsPlacement=!0,this._tooltipTagId=i,t>0&&(this._hideTimer=window.setTimeout(()=>this._closeTooltip(),t))}_closeTooltip(){this._clearHideTimer(),this._tooltipTagId&&(this._tooltipTagId="",this._anchorRect=null)}_blockedChip(i){if(!(i instanceof Element))return null;const e=i.closest("[data-blocked]");return e instanceof HTMLElement?e:null}_onPoolPointerOver(i){if(i.pointerType!=="mouse")return;const e=this._blockedChip(i.target);if(!e){this._tooltipTagId&&this._closeTooltip();return}const t=e.dataset.tagId??"";t&&t!==this._tooltipTagId&&this._openTooltip(t,e)}_onPoolPointerLeave(i){i.pointerType==="mouse"&&this._closeTooltip()}_onPoolPointerDown(i){if(i.pointerType==="mouse")return;const e=this._blockedChip(i.target);if(!e){this._closeTooltip();return}const t=e.dataset.tagId??"";t&&this._openTooltip(t,e,Gt)}updated(){if(!this._needsPlacement)return;const i=this.renderRoot.querySelector(".tag-selection__tooltip"),e=this._anchorRect;if(!i||!e)return;this._needsPlacement=!1,i.style.left="",i.style.top="";const{width:t,height:o}=i.getBoundingClientRect(),s=Math.max(de,Math.min(e.left+e.width/2-t/2,window.innerWidth-de-t)),a=e.top-Ue-o,r=a<de?e.bottom+Ue:a;i.style.left=`${s}px`,i.style.top=`${r}px`}_onTagClick(i){this.isReadOnly||this.dispatchEvent(new CustomEvent("swt-tag-selection:select",{detail:{tagId:i.id},bubbles:!0,composed:!0}))}_renderSelected(){const i=this.selectedTagIds.map(e=>this.selection?.tags.find(t=>t.id===e)).filter(e=>e!==void 0);return f` <div class="tag-selection__label">Vybráno</div>
       <div class="tag-selection__list">
         ${i?.map(e=>{const t=this.collidingTagIds.includes(e.id),o=["tag-selection__tag","tag-selection__tag--removable",t&&this.collisionState===v.Warn?"tag-selection__tag--collision-warn":"",t&&this.collisionState===v.Error?"tag-selection__tag--collision-error":""].filter(Boolean).join(" ");return f`<span class=${o}>
             ${e.value}
@@ -1252,9 +1255,9 @@ var SourceWorkTool=(function(h){"use strict";/**
             @pointerdown=${this._onPoolPointerDown}
             @scroll=${this._onAnchorMoved}
           >
-            ${this.selection.tags.map(i=>{const e=this.selectedTagIds.includes(i.id),t=this.sharedSelectedTagIds.includes(i.id),o=this.blockedTagIds.includes(i.id),r=["tag-selection__tag",this.highlightSelectedTags&&(e||this.selection?.mode===J.SingleUse&&t)?"tag-selection__tag--selected":"",o?"tag-selection__tag--blocked":""].filter(Boolean).join(" ");return f`
+            ${this.selection.tags.map(i=>{const e=this.selectedTagIds.includes(i.id),t=this.sharedSelectedTagIds.includes(i.id),o=this.blockedTagIds.includes(i.id),a=["tag-selection__tag",this.highlightSelectedTags&&(e||this.selection?.mode===J.SingleUse&&t)?"tag-selection__tag--selected":"",o?"tag-selection__tag--blocked":""].filter(Boolean).join(" ");return f`
                 <button
-                  class=${r}
+                  class=${a}
                   data-tag-id=${i.id}
                   ?data-blocked=${o}
                   ?disabled=${this.isReadOnly}
@@ -1271,7 +1274,7 @@ var SourceWorkTool=(function(h){"use strict";/**
       ${this._tooltipTagId&&this.noticeText?f`<div class="tag-selection__tooltip" role="tooltip">
             ${this.noticeText}
           </div>`:g}
-    `:g}};b.styles=M`
+    `:g}};m.styles=D`
     /* :host {
       display: grid;
       grid-template-rows: auto 1fr;
@@ -1355,14 +1358,19 @@ var SourceWorkTool=(function(h){"use strict";/**
 
     .tag-selection__selected .tag-selection__list::-webkit-scrollbar-thumb,
     .tag-selection__pool .tag-selection__list::-webkit-scrollbar-thumb {
-      background: var(--swt-color-bg-medium-dark);
+      /* light on the dark panel below — --swt-color-bg-medium-dark all but disappears there */
+      background: var(--swt-color-text-light);
       border-radius: 999px;
     }
 
+    /* The panel the two tag groups sit in. --swt-sheet-panel ($color-bg--4, inherited from
+       <swt-modal>) rather than --swt-color-bg-dark: that tone IS the modal surface in both
+       modes now, so the group would merge into it and its label drop to ~3:1. */
     .box-with-tags {
-      background: var(--swt-color-bg-dark);
-      border-radius: 20px;
+      background: var(--swt-sheet-panel, #583d3c);
+      border-radius: 16px;
       padding: 0.8rem 1.5rem 1rem 1.5rem;
+      box-sizing: border-box;
     }
 
     .tag-selection__label {
@@ -1386,7 +1394,9 @@ var SourceWorkTool=(function(h){"use strict";/**
       color: var(--swt-color-bg-very-dark);
 
       padding: 0.7rem 1.2rem 0.7rem 1.2rem;
-      /* border: 1px solid #999; */
+      /* Transparent, so an available chip keeps exactly the geometry of the outlined
+         --selected one below and the pool does not reflow as tags are used up. */
+      border: 2px solid transparent;
       border-radius: 20px;
       background: var(--swt-color-bg-light);
       box-shadow: var(--box-shadow-default);
@@ -1407,10 +1417,15 @@ var SourceWorkTool=(function(h){"use strict";/**
       word-break: break-word;
     }
 
+    /* "Already used". --swt-color-bg-medium-dark composites to ~1:1 against the dark panel:
+       the chip would be gone. On a dark panel an unavailable chip has to recede rather than go
+       darker, so it becomes an outline — the dashed placeholder idiom the exercise uses for
+       empty drop areas (src/scss/ui/_draggable.scss). Text lands at 4.9:1. */
     .tag-selection__tag--selected {
-      background: var(--swt-color-bg-medium-dark);
-      color: var(--swt-color-text-light);
-      /* opacity: 0.8; */
+      background: transparent;
+      border: 2px dashed rgba(252, 228, 226, 0.45);
+      color: rgba(252, 228, 226, 0.7);
+      box-shadow: none;
     }
 
     .tag-selection__tag--removable {
@@ -1567,15 +1582,10 @@ var SourceWorkTool=(function(h){"use strict";/**
       touch-action: auto;
     }
 
-    /* The desktop fill (--swt-color-bg-dark) is exactly the compact sheet's surface, so
-       the two boxes would merge into one field and the label sat at 3.1:1. Stepping down
-       to --swt-sheet-panel ($color-bg--4, inherited from <swt-modal>) separates the group
-       from the surface and lifts the label to 8.1:1. */
+    /* Only the padding is compact's own — the panel fill and radius are the base's, shared
+       with the desktop modal. */
     :host([compact]) .box-with-tags {
       padding: 0.5rem 0.8rem 0.6rem;
-      border-radius: 16px;
-      box-sizing: border-box;
-      background: var(--swt-sheet-panel, #583d3c);
     }
 
     /* inline-flex replaces the desktop -webkit-box. Safe today because -webkit-line-clamp
@@ -1588,21 +1598,7 @@ var SourceWorkTool=(function(h){"use strict";/**
       min-height: 44px;
       padding: 0.55rem 1rem;
       font-size: 0.95rem;
-      /* Transparent, so an available chip keeps exactly the geometry of the outlined
-         --selected one below and the pool does not reflow as tags are used up. */
-      border: 2px solid transparent;
       touch-action: manipulation;
-    }
-
-    /* --swt-color-bg-medium-dark composites to 1.0:1 against --swt-sheet-panel: the
-       chip would be gone. "Already used" has to recede on a dark panel rather than go
-       darker, so it becomes an outline — the dashed placeholder idiom the exercise uses
-       for empty drop areas (src/scss/ui/_draggable.scss). Text lands at 4.9:1. */
-    :host([compact]) .tag-selection__tag--selected {
-      background: transparent;
-      border: 2px dashed rgba(252, 228, 226, 0.45);
-      color: rgba(252, 228, 226, 0.7);
-      box-shadow: none;
     }
 
     /* The remove button moves from an 18px corner badge into the chip's flow, so that it
@@ -1638,7 +1634,7 @@ var SourceWorkTool=(function(h){"use strict";/**
       padding: 0.6rem 0.85rem;
       font-size: 0.85rem;
     }
-  `,w([u({attribute:!1})],b.prototype,"selection",2),w([u({attribute:!1})],b.prototype,"selectedTagIds",2),w([u({attribute:!1})],b.prototype,"sharedSelectedTagIds",2),w([u({attribute:!1})],b.prototype,"blockedTagIds",2),w([u({attribute:!1})],b.prototype,"noticeText",2),w([ee()],b.prototype,"_tooltipTagId",2),w([u({attribute:!1})],b.prototype,"maxSelectedTags",2),w([u({attribute:!1})],b.prototype,"highlightSelectedTags",2),w([u({attribute:!1})],b.prototype,"collisionState",2),w([u({attribute:!1})],b.prototype,"collidingTagIds",2),w([u({type:Boolean})],b.prototype,"isReadOnly",2),w([u({type:Boolean,reflect:!0})],b.prototype,"compact",2),b=w([Q("swt-tag-selection")],b);var Yt=Object.defineProperty,Xt=Object.getOwnPropertyDescriptor,pe=(i,e,t,o)=>{for(var s=o>1?void 0:o?Xt(e,t):e,r=i.length-1,a;r>=0;r--)(a=i[r])&&(s=(o?a(e,t,s):a(s))||s);return o&&s&&Yt(e,t,s),s};h.SwtModal=class extends T{constructor(){super(...arguments),this._isCompact=!1,this._compactMql=null,this._scrollLock=new pt({allow:()=>this.shadowRoot?.querySelector(".hl-sheet__inner")??null,from:()=>this._toolHost?.parentElement??null}),this._handleCompactChange=e=>{this._isCompact=e.matches}}get _toolHost(){const e=this.getRootNode();return e instanceof ShadowRoot?e.host:null}connectedCallback(){super.connectedCallback(),typeof window.matchMedia=="function"&&(this._compactMql=window.matchMedia(ut),this._isCompact=this._compactMql.matches,this._compactMql.addEventListener("change",this._handleCompactChange))}disconnectedCallback(){this._scrollLock.set(!1),this._compactMql?.removeEventListener("change",this._handleCompactChange),this._compactMql=null,super.disconnectedCallback()}get _selectedSourceDetailRecord(){const e=this._uiModel?.selectedId;return e&&this._uiModel?.sourceDetails.find(t=>t.id===e)||null}get _dialog(){return this.shadowRoot?.querySelector("dialog")??null}get _open(){return this._uiModel?.modalOpen??!1}_resolveDependencySelectionId(e,t){const o=e.moduleId;return e.configuration.sourceDetails.find(r=>F(o,r.id)===t||r.id===t)?.selectionId??e.configuration.sourceDetailsSettings?.selectionId}_resolveDependencyTagLabel(e,t,o){const s=this._resolveDependencySelectionId(e,t);return s?(this._uiModel?.dependencyData??[]).find(a=>a.moduleType===R.Selection&&a.moduleId===s)?.configuration.tags.find(a=>a.id===o)?.value:void 0}get _clonedDataText(){if(!this._selectedSourceDetailRecord||this._selectedSourceDetailRecord.dependencyLinks.length===0)return null;const e=[];for(const t of this._selectedSourceDetailRecord.dependencyLinks)for(const o of(this._uiModel?.dependencyData??[]).filter(s=>s.moduleType===R.Swt)){const s=o.userData.sourceDetails.find(r=>r.id===t);if(s)for(const r of s.selectedTags){const a=this._resolveDependencyTagLabel(o,s.id,r.tagId)??r.tagId;e.push({tagValue:a})}}return e.length>0?e:null}get _heading(){return this._uiModel?.sourceDetailsSettings?.assignment||"No header"}updated(e){e.has("_isCompact")&&this.toggleAttribute("compact",this._isCompact);const t=this._dialog;if(!t){this._scrollLock.set(!1);return}this._open&&!t.open?t.showModal():!this._open&&t.open&&t.close(),this._scrollLock.set(this._isCompact&&this._open)}_onDialogClick(e){e.target===e.currentTarget&&this._requestClose()}_requestClose(){this.dispatchEvent(new CustomEvent("swt-modal:close",{bubbles:!0,composed:!0}))}_onDialogClose(){this._open&&this._requestClose()}renderDetail(e){return f`<img
+  `,w([u({attribute:!1})],m.prototype,"selection",2),w([u({attribute:!1})],m.prototype,"selectedTagIds",2),w([u({attribute:!1})],m.prototype,"sharedSelectedTagIds",2),w([u({attribute:!1})],m.prototype,"blockedTagIds",2),w([u({attribute:!1})],m.prototype,"noticeText",2),w([ee()],m.prototype,"_tooltipTagId",2),w([u({attribute:!1})],m.prototype,"maxSelectedTags",2),w([u({attribute:!1})],m.prototype,"highlightSelectedTags",2),w([u({attribute:!1})],m.prototype,"collisionState",2),w([u({attribute:!1})],m.prototype,"collidingTagIds",2),w([u({type:Boolean})],m.prototype,"isReadOnly",2),w([u({type:Boolean,reflect:!0})],m.prototype,"compact",2),m=w([Q("swt-tag-selection")],m);var Yt=Object.defineProperty,Xt=Object.getOwnPropertyDescriptor,pe=(i,e,t,o)=>{for(var s=o>1?void 0:o?Xt(e,t):e,a=i.length-1,r;a>=0;a--)(r=i[a])&&(s=(o?r(e,t,s):r(s))||s);return o&&s&&Yt(e,t,s),s};h.SwtModal=class extends T{constructor(){super(...arguments),this._isCompact=!1,this._compactMql=null,this._scrollLock=new pt({allow:()=>this.shadowRoot?.querySelector(".hl-sheet__inner")??null,from:()=>this._toolHost?.parentElement??null}),this._handleCompactChange=e=>{this._isCompact=e.matches}}get _toolHost(){const e=this.getRootNode();return e instanceof ShadowRoot?e.host:null}connectedCallback(){super.connectedCallback(),typeof window.matchMedia=="function"&&(this._compactMql=window.matchMedia(ut),this._isCompact=this._compactMql.matches,this._compactMql.addEventListener("change",this._handleCompactChange))}disconnectedCallback(){this._scrollLock.set(!1),this._compactMql?.removeEventListener("change",this._handleCompactChange),this._compactMql=null,super.disconnectedCallback()}get _selectedSourceDetailRecord(){const e=this._uiModel?.selectedId;return e&&this._uiModel?.sourceDetails.find(t=>t.id===e)||null}get _dialog(){return this.shadowRoot?.querySelector("dialog")??null}get _open(){return this._uiModel?.modalOpen??!1}_resolveDependencySelectionId(e,t){const o=e.moduleId;return e.configuration.sourceDetails.find(a=>F(o,a.id)===t||a.id===t)?.selectionId??e.configuration.sourceDetailsSettings?.selectionId}_resolveDependencyTagLabel(e,t,o){const s=this._resolveDependencySelectionId(e,t);return s?(this._uiModel?.dependencyData??[]).find(r=>r.moduleType===B.Selection&&r.moduleId===s)?.configuration.tags.find(r=>r.id===o)?.value:void 0}get _clonedDataText(){if(!this._selectedSourceDetailRecord||this._selectedSourceDetailRecord.dependencyLinks.length===0)return null;const e=[];for(const t of this._selectedSourceDetailRecord.dependencyLinks)for(const o of(this._uiModel?.dependencyData??[]).filter(s=>s.moduleType===B.Swt)){const s=o.userData.sourceDetails.find(a=>a.id===t);if(s)for(const a of s.selectedTags){const r=this._resolveDependencyTagLabel(o,s.id,a.tagId)??a.tagId;e.push({tagValue:r})}}return e.length>0?e:null}get _heading(){return this._uiModel?.sourceDetailsSettings?.assignment||"No header"}updated(e){e.has("_isCompact")&&this.toggleAttribute("compact",this._isCompact);const t=this._dialog;if(!t){this._scrollLock.set(!1);return}this._open&&!t.open?t.showModal():!this._open&&t.open&&t.close(),this._scrollLock.set(this._isCompact&&this._open)}_onDialogClick(e){e.target===e.currentTarget&&this._requestClose()}_requestClose(){this.dispatchEvent(new CustomEvent("swt-modal:close",{bubbles:!0,composed:!0}))}_onDialogKeydown(e){e.key!=="ArrowLeft"&&e.key!=="ArrowRight"||this._requestClose()}_onDialogClose(){this._open&&this._requestClose()}renderDetail(e){return f`<img
       src=${e.source}
       alt=${e.name||e.id}
     />`}renderClonedData(e){return f`
@@ -1646,15 +1642,15 @@ var SourceWorkTool=(function(h){"use strict";/**
       <div class="cloned-data__list">
         ${e.map(t=>f`<span class="cloned-data__tag">${t.tagValue}</span>`)}
       </div>
-    `}renderUserData(e){const t=this._uiModel?.selectedId,o=t?this._uiModel?.userData.sourceDetails.find(c=>c.id===t)?.selectedTags??[]:[],s=this._uiModel?.selections.find(c=>c.id===e?.selectionId),r=s?this._uiModel?.userData.sourceDetails.filter(c=>this._uiModel?.sourceDetails.find(_=>_.id===c.id)?.selectionId===s.id).flatMap(c=>c.selectedTags)??[]:[],a=s?.maxSelectedTags??null,l=s?.highlightSelectedTags??!0,n=e&&this._uiModel?Ie(this._uiModel,e):{iconState:v.New,collidingTagIds:[]},d=Le(s)&&e&&this._uiModel?Ue(this._uiModel,e):[],p=d.length?s?.singleUseMessage||bt(this._uiModel?.lang,"tagAssignedElsewhere"):"";return f`
+    `}renderUserData(e){const t=this._uiModel?.selectedId,o=t?this._uiModel?.userData.sourceDetails.find(c=>c.id===t)?.selectedTags??[]:[],s=this._uiModel?.selections.find(c=>c.id===e?.selectionId),a=s?this._uiModel?.userData.sourceDetails.filter(c=>this._uiModel?.sourceDetails.find(_=>_.id===c.id)?.selectionId===s.id).flatMap(c=>c.selectedTags)??[]:[],r=s?.maxSelectedTags??null,l=s?.highlightSelectedTags??!0,n=e&&this._uiModel?Ie(this._uiModel,e):{iconState:v.New,collidingTagIds:[]},d=Le(s)&&e&&this._uiModel?He(this._uiModel,e):[],p=d.length?s?.singleUseMessage||mt(this._uiModel?.lang,"tagAssignedElsewhere"):"";return f`
       <swt-tag-selection
         .selection=${s??null}
         .selectedTagIds=${o}
-        .sharedSelectedTagIds=${r}
+        .sharedSelectedTagIds=${a}
         .blockedTagIds=${d}
         .noticeText=${p}
         .sourceDetail=${e??""}
-        .maxSelectedTags=${a}
+        .maxSelectedTags=${r}
         .highlightSelectedTags=${l}
         .collisionState=${n.iconState}
         .collidingTagIds=${n.collidingTagIds}
@@ -1686,6 +1682,7 @@ var SourceWorkTool=(function(h){"use strict";/**
       <dialog
         class="hl-sheet"
         @click=${this._onDialogClick}
+        @keydown=${this._onDialogKeydown}
         @close=${this._onDialogClose}
       >
         <div class="hl-sheet__inner">
@@ -1693,9 +1690,16 @@ var SourceWorkTool=(function(h){"use strict";/**
             <h1 class="hl-sheet__heading">${this._heading}</h1>
             <button
               class="hl-sheet__close"
-              aria-label="Zavřít"
+              aria-label="Zavřít okno"
               @click=${this._requestClose}
             ></button>
+            <!-- Names the bare × on desktop, where it has no ring to read as a button.
+                 Pointer affordance only — hence aria-hidden and no compact counterpart, the
+                 sheet has a Hotovo footer and no hover to trigger it.
+                 TODO(i18n): move to I18nDict once lang is on SwtUiModel. -->
+            ${this._isCompact?g:f`<span class="hl-sheet__close-tip" aria-hidden="true"
+                  >Zavřít okno</span
+                >`}
           </div>
 
           <div class="hl-sheet__body">
@@ -1712,7 +1716,7 @@ var SourceWorkTool=(function(h){"use strict";/**
               </div>`:g}
         </div>
       </dialog>
-    `}},h.SwtModal.styles=[gt,ft,mt,M`
+    `}},h.SwtModal.styles=[gt,ft,bt,D`
     /* ── Design tokens — override from outside with CSS custom properties ── */
     :host {
       --swt-color-primary: var(--hl-color-primary);
@@ -1720,7 +1724,11 @@ var SourceWorkTool=(function(h){"use strict";/**
       --swt-color-bg-very-dark: var(--hl-color-bg-very-dark);
       --swt-color-bg-dark: var(--hl-color-bg-dark);
       --swt-color-bg-light: var(--hl-color-bg-light);
-      --swt-color-header: hsl(2, 19%, 56%);
+      /* Heading and the cloned-data label. Dark, not the rose it used to be: both now sit on
+         light chrome (the header band) or on the rose surface itself, where the rose tone would
+         either wash out or vanish into its own background. Same call sheetStyles makes for
+         .hl-sheet__heading. */
+      --swt-color-header: var(--hl-color-text);
       --swt-color-text: var(--hl-color-text);
       /* --swt-color-text-header: black; */
       --swt-color-shadow: var(--hl-color-shadow);
@@ -1740,14 +1748,20 @@ var SourceWorkTool=(function(h){"use strict";/**
 
     dialog {
       border: none;
-      border-radius: 15px;
+      /* the sheet's radius, so both modes round the same amount */
+      border-radius: var(--hl-sheet-radius);
       padding: 0;
       /* mobile: full width */
       max-width: 90vw;
       width: 100%;
       height: min(85vh, 700px);
       box-shadow: 0 8px 40px var(--swt-color-shadow);
-      background: var(--swt-color-secondary);
+      /* Same surface as the compact sheet ($color-bg--3), not the pale --swt-color-secondary:
+         the desktop dialog and the touch sheet are one component in two shapes. Everything
+         nested on it — the tag panels, the cloned-data chips — follows the sheet's ladder. */
+      background: var(--swt-sheet-surface);
+      /* so the rounded corners clip the light header band */
+      overflow: hidden;
       font-family: var(--swt-font-family);
       color: var(--swt-color-text);
     }
@@ -1775,44 +1789,113 @@ var SourceWorkTool=(function(h){"use strict";/**
     }
 
     /* ── Desktop modal chrome ──────────────────────────────────────────────
-       The elements below are shared with the compact sheet, but their DESKTOP look is not:
-       a centred dialog with a corner ×, rather than a bottom sheet. Each is scoped to
-       :not([compact]) so nothing here can leak past sheetStyles into the sheet — the corner
-       offsets in particular, which 'position: relative' alone does not neutralise.
+       The desktop dialog wears the sheet's chrome — rose surface, light header band, outlined
+       × — but keeps its own two-column layout: tag panel left, source image right. So the
+       rules below mirror sheetStyles at desktop sizes rather than inventing a second look.
+       Each is scoped to :not([compact]) so nothing here can leak into the sheet, whose own
+       geometry (touch targets, safe-area insets, the Hotovo footer) is sheetStyles' business.
        The × strokes below are deliberately NOT scoped: both modes draw the same cross, and
        sheetStyles only resizes it. */
     :host(:not([compact])) .hl-sheet__inner {
-      position: relative;
-      padding: 1rem 3rem 3rem 3rem;
       height: 100%;
       box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
+      padding: 0;
+      display: grid;
+      /* header band | body — no footer on desktop, the corner × is target enough */
+      grid-template-rows: auto minmax(0, 1fr);
     }
 
-    /* Desktop only. On the compact sheet the button sits in the header band's flex flow and
-       sheetStyles owns its box — parking it in a corner here would fight that, so the rule
-       says so in the selector rather than relying on the sheet to undo it. */
+    /* Mirrors the sheet's header band (and the exercise's own #header): a light strip across
+       the full width, dark heading left, × right. Desktop sizes, same colours.
+       Positioned, because .hl-sheet__close-tip below hangs off it. */
+    :host(:not([compact])) .hl-sheet__header {
+      position: relative;
+      margin: 0;
+      box-sizing: border-box;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--swt-color-bg-light);
+    }
+
+    /* Sits in the header band's flex flow, exactly as on the sheet — it used to be parked
+       absolutely in the dialog's corner, which the band makes unnecessary.
+       No circle on desktop: the glyph alone is the button, and the 40px box stays only as the
+       click target. The sheet keeps its outlined circle — there the ring is what makes a 44px
+       touch target visible. Must stay positioned: the ::before/::after strokes drawing the ×
+       resolve against it. */
     :host(:not([compact])) .hl-sheet__close {
-      position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
-      width: 32px;
-      height: 32px;
-      border: 2px solid var(--swt-color-bg-dark); /* circle color */
-      border-radius: 50%;
+      position: relative;
+      flex: 0 0 auto;
+      box-sizing: border-box;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: none;
       background: transparent;
       cursor: pointer;
     }
 
-    .hl-sheet__close:hover {
+    /* Bigger than the shared base, because without the ring the two strokes carry the whole
+       button. The colour stays the rose --swt-color-bg-dark the ring used to have, matching
+       the sheet's × — it is a 3px glyph on the light band, not body text. */
+    :host(:not([compact])) .hl-sheet__close::before,
+    :host(:not([compact])) .hl-sheet__close::after {
+      width: 20px;
+      height: 3px;
       background: var(--swt-color-bg-dark);
-      /* border-color: var(--swt-color-bg-very-dark); */
     }
 
-    .hl-sheet__close:hover::before,
-    .hl-sheet__close:hover::after {
-      background: var(--swt-color-bg-light);
+    /* Hover/focus feedback is the colour shift plus the label below — there is no fill left
+       to invert. */
+    :host(:not([compact])) .hl-sheet__close:hover::before,
+    :host(:not([compact])) .hl-sheet__close:hover::after,
+    :host(:not([compact])) .hl-sheet__close:focus-visible::before,
+    :host(:not([compact])) .hl-sheet__close:focus-visible::after {
+      background: var(--swt-color-bg-very-dark);
+    }
+
+    :host(:not([compact])) .hl-sheet__close:focus-visible {
+      outline: 3px solid var(--swt-color-bg-very-dark);
+      outline-offset: 2px;
+      border-radius: 50%;
+    }
+
+    /* Desktop-only label for the bare ×, which no longer says what it is on its own. Hangs
+       below the header band rather than inside it, so it cannot push the band's layout around;
+       the band has to stay above it, hence the z-index. Rendered as a sibling AFTER the button
+       so plain CSS (~) can reveal it — the button's own ::before/::after are the × already.
+       aria-hidden: the button's aria-label carries the same words for a screen reader. */
+    :host(:not([compact])) .hl-sheet__close-tip {
+      position: absolute;
+      top: calc(100% - 0.35rem);
+      right: 1.5rem;
+      z-index: 1;
+      padding: 0.3rem 0.6rem;
+      border-radius: 8px;
+      background: var(--swt-color-bg-very-dark);
+      color: var(--swt-color-bg-light);
+      font-family: var(--swt-font-family);
+      font-size: 0.78rem;
+      line-height: 1.3;
+      white-space: nowrap;
+      box-shadow: 0 0.25rem 0.75rem var(--swt-color-shadow);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.12s ease;
+    }
+
+    :host(:not([compact])) .hl-sheet__close:hover ~ .hl-sheet__close-tip,
+    :host(:not([compact])) .hl-sheet__close:focus-visible ~ .hl-sheet__close-tip {
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      :host(:not([compact])) .hl-sheet__close-tip {
+        transition-duration: 1ms;
+      }
     }
 
     /* the X */
@@ -1837,26 +1920,24 @@ var SourceWorkTool=(function(h){"use strict";/**
     }
 
     :host(:not([compact])) .hl-sheet__heading {
-      /* margin: 0 2rem 0.75rem 0; */
-      font-size: 2rem;
+      margin: 0;
+      min-width: 0;
+      font-size: 1.75rem;
       line-height: 1.2;
       font-weight: 600;
       color: var(--swt-color-header);
       font-family: var(--swt-font-family);
     }
 
-    /* Must stay unpositioned — .hl-sheet__close is absolute and resolves against .hl-sheet__inner. */
-    :host(:not([compact])) .hl-sheet__header {
-      margin: 0 2rem 0.75rem 0;
-      padding-bottom: 0.5rem;
-      /* border-bottom: 2px solid var(--swt-color-primary); */
-      display: flex;
-      justify-content: center;
-    }
-
+    /* The grid's 1fr row, so the two-column layout inside resolves its height: 100%.
+       The padding that used to sit on .hl-sheet__inner moved here — the header band has to
+       reach the dialog's edges, the content must not. */
     :host(:not([compact])) .hl-sheet__body {
-      flex: 1;
       min-height: 0;
+      box-sizing: border-box;
+      padding: 1.5rem 2rem 2rem;
+      overflow: auto;
+      background: var(--swt-sheet-surface);
     }
 
     .hl-sheet__body img {
@@ -1904,6 +1985,10 @@ var SourceWorkTool=(function(h){"use strict";/**
       object-fit: contain;
       object-position: center;
       border-radius: 20px;
+      /* A light source has no edge of its own against the rose surface. The exercise's idiom
+         for that is a soft dark halo rather than a border ($box-shadow in
+         src/scss/variables/_variables.scss) — the compact sheet draws the same one. */
+      box-shadow: 0 0.4rem 1.6rem rgba(27, 19, 19, 0.8);
     }
 
     .source-detail__cloned-data {
@@ -1942,7 +2027,8 @@ var SourceWorkTool=(function(h){"use strict";/**
     }
 
     .cloned-data__list::-webkit-scrollbar-thumb {
-      background: var(--swt-color-bg-dark);
+      /* --swt-color-bg-dark IS the surface now, so the thumb needs the step below it */
+      background: var(--swt-color-bg-very-dark);
       border-radius: 999px;
     }
 
@@ -1953,7 +2039,9 @@ var SourceWorkTool=(function(h){"use strict";/**
       padding: 0.3rem 0.7rem 0.3rem 0.7rem;
       border-radius: 20px;
       background: var(--swt-color-secondary);
-      border: 3px solid var(--swt-color-bg-dark);
+      /* NOT --swt-color-bg-dark: that IS the surface in both modes now, so the chip would
+         lose its outline and bleed into the background. */
+      border: 3px solid var(--swt-color-bg-very-dark);
       font-size: 0.85rem;
       line-height: 1.2;
       text-align: center;
@@ -2074,10 +2162,8 @@ var SourceWorkTool=(function(h){"use strict";/**
 
     :host([compact]) .cloned-data__tag {
       scroll-snap-align: start;
+      /* thinner than the desktop 3px; the colour is already the base's */
       border-width: 2px;
-      /* The base border is --swt-color-bg-dark, which IS the sheet surface here, so the
-         chip would lose its outline and bleed into the background. */
-      border-color: var(--swt-color-bg-very-dark);
       padding: 0.35rem 0.7rem;
       font-size: 0.8rem;
     }
@@ -2092,12 +2178,12 @@ var SourceWorkTool=(function(h){"use strict";/**
         padding-bottom: 0.75rem;
       }
     }
-  `],pe([Ht({context:Re,subscribe:!0})],h.SwtModal.prototype,"_uiModel",2),pe([ee()],h.SwtModal.prototype,"_isCompact",2),h.SwtModal=pe([Q("swt-modal")],h.SwtModal);var Zt=Object.defineProperty,Ft=Object.getOwnPropertyDescriptor,x=(i,e,t,o)=>{for(var s=o>1?void 0:o?Ft(e,t):e,r=i.length-1,a;r>=0;r--)(a=i[r])&&(s=(o?a(e,t,s):a(s))||s);return o&&s&&Zt(e,t,s),s};return h.SwtSelection=class extends T{constructor(){super(...arguments),this.label="",this.dependencies=[],this.tags=[],this.mode=J.Reusable,this.selectedTagIds=[],this.sharedSelectedTagIds=[],this.isReadOnly=!1}exportState(){return{id:this.id,tags:[...this.tags],mode:this.mode,maxSelectedTags:this.maxSelectedTags,highlightSelectedTags:this.highlightSelectedTags}}_onTagClick(e){this.isReadOnly||this.dispatchEvent(new CustomEvent("swt-tag-selection:select",{detail:{tagId:e.id},bubbles:!0,composed:!0}))}render(){return this.tags.length?f`
+  `],pe([Ut({context:Be,subscribe:!0})],h.SwtModal.prototype,"_uiModel",2),pe([ee()],h.SwtModal.prototype,"_isCompact",2),h.SwtModal=pe([Q("swt-modal")],h.SwtModal);var Zt=Object.defineProperty,Ft=Object.getOwnPropertyDescriptor,x=(i,e,t,o)=>{for(var s=o>1?void 0:o?Ft(e,t):e,a=i.length-1,r;a>=0;a--)(r=i[a])&&(s=(o?r(e,t,s):r(s))||s);return o&&s&&Zt(e,t,s),s};return h.SwtSelection=class extends T{constructor(){super(...arguments),this.label="",this.dependencies=[],this.tags=[],this.mode=J.Reusable,this.selectedTagIds=[],this.sharedSelectedTagIds=[],this.isReadOnly=!1}exportState(){return{id:this.id,tags:[...this.tags],mode:this.mode,maxSelectedTags:this.maxSelectedTags,highlightSelectedTags:this.highlightSelectedTags}}_onTagClick(e){this.isReadOnly||this.dispatchEvent(new CustomEvent("swt-tag-selection:select",{detail:{tagId:e.id},bubbles:!0,composed:!0}))}render(){return this.tags.length?f`
       <div class="pool__label">Nabidka:</div>
       <div class="pool__list">
-        ${this.tags.map(e=>{const t=this.selectedTagIds.includes(e.id),o=this.sharedSelectedTagIds.includes(e.id),r=["pool__tag",this.highlightSelectedTags&&(t||this.mode===J.SingleUse&&o)?"pool__tag--selected":""].filter(Boolean).join(" ");return f`
+        ${this.tags.map(e=>{const t=this.selectedTagIds.includes(e.id),o=this.sharedSelectedTagIds.includes(e.id),a=["pool__tag",this.highlightSelectedTags&&(t||this.mode===J.SingleUse&&o)?"pool__tag--selected":""].filter(Boolean).join(" ");return f`
             <button
-              class=${r}
+              class=${a}
               ?disabled=${this.isReadOnly}
               @click=${()=>this._onTagClick(e)}
             >
@@ -2105,7 +2191,7 @@ var SourceWorkTool=(function(h){"use strict";/**
             </button>
           `})}
       </div>
-    `:g}},h.SwtSelection.styles=M`
+    `:g}},h.SwtSelection.styles=D`
     :host {
       --swt-color-primary: #5352a6;
       --swt-color-secondary: #fce4e3;
@@ -2193,5 +2279,5 @@ var SourceWorkTool=(function(h){"use strict";/**
       background: var(--swt-color-bg-medium-dark);
       color: var(--swt-color-text-light);
     }
-  `,x([u({type:String})],h.SwtSelection.prototype,"label",2),x([u({attribute:!1})],h.SwtSelection.prototype,"dependencies",2),x([u({attribute:!1})],h.SwtSelection.prototype,"tags",2),x([u({type:String})],h.SwtSelection.prototype,"mode",2),x([u({type:Number,attribute:"max-selected-tags"})],h.SwtSelection.prototype,"maxSelectedTags",2),x([u({type:Boolean,attribute:"highlight-selected-tags"})],h.SwtSelection.prototype,"highlightSelectedTags",2),x([u({attribute:!1})],h.SwtSelection.prototype,"selectedTagIds",2),x([u({attribute:!1})],h.SwtSelection.prototype,"sharedSelectedTagIds",2),x([u({type:Boolean})],h.SwtSelection.prototype,"isReadOnly",2),h.SwtSelection=x([Q("swt-selection")],h.SwtSelection),h.ColisionType=O,h.SourceDetailType=Ee,h.SourceFunction=De,Object.defineProperty(h,Symbol.toStringTag,{value:"Module"}),h})({});
+  `,x([u({type:String})],h.SwtSelection.prototype,"label",2),x([u({attribute:!1})],h.SwtSelection.prototype,"dependencies",2),x([u({attribute:!1})],h.SwtSelection.prototype,"tags",2),x([u({type:String})],h.SwtSelection.prototype,"mode",2),x([u({type:Number,attribute:"max-selected-tags"})],h.SwtSelection.prototype,"maxSelectedTags",2),x([u({type:Boolean,attribute:"highlight-selected-tags"})],h.SwtSelection.prototype,"highlightSelectedTags",2),x([u({attribute:!1})],h.SwtSelection.prototype,"selectedTagIds",2),x([u({attribute:!1})],h.SwtSelection.prototype,"sharedSelectedTagIds",2),x([u({type:Boolean})],h.SwtSelection.prototype,"isReadOnly",2),h.SwtSelection=x([Q("swt-selection")],h.SwtSelection),h.ColisionType=O,h.SourceDetailType=Ee,h.SourceFunction=Me,Object.defineProperty(h,Symbol.toStringTag,{value:"Module"}),h})({});
 //# sourceMappingURL=source-work-tool.js.map

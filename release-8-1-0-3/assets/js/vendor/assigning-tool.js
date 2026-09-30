@@ -216,7 +216,7 @@ var AssigningTool=(function(f){"use strict";/**
     overflow: hidden;
   }
 
-  /* ── Close button — an outlined circle with a CSS-drawn × ── */
+  /* ── Close button — a bare CSS-drawn ×, no ring ── */
   :host([compact]) .hl-sheet__close {
     /* must stay positioned: the ::before/::after strokes drawing the × are absolute and
        would otherwise resolve against the nearest positioned ancestor */
@@ -233,8 +233,10 @@ var AssigningTool=(function(f){"use strict";/**
     width: var(--hl-sheet-touch-target);
     height: var(--hl-sheet-touch-target);
     padding: 0;
-    /* darker than the surface, which is too faint against the light header band */
-    border: 2px solid var(--hl-color-bg-dark, #a47b79);
+    /* No ring: the glyph alone is the button in both tools. The box keeps
+       --hl-sheet-touch-target so the target stays 44px even though nothing draws it, and the
+       radius is left for the hover fill and the focus outline to follow. */
+    border: none;
     border-radius: 50%;
     background: transparent;
     cursor: pointer;
@@ -261,8 +263,9 @@ var AssigningTool=(function(f){"use strict";/**
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 
-  /* Fill with the outline colour and flip the × light. :active as well, for touch devices
-     that have no hover state. */
+  /* Press state: a disc in the × own colour, with the strokes flipped light. It is the only
+     feedback left now that there is no ring to recolour. :active as well — and above all —
+     for touch devices, which have no hover. */
   :host([compact]) .hl-sheet__close:hover,
   :host([compact]) .hl-sheet__close:active {
     background: var(--hl-color-bg-dark, #a47b79);
@@ -954,6 +957,10 @@ var AssigningTool=(function(f){"use strict";/**
     border-radius: 8px;
   }
 
+  /* Same badge as source-work-tool's .tag-selection__tag-remove-btn, down to the geometry:
+     a light disc outlined in the rose --at-color-border ($color-bg--3), which fills with that
+     rose and flips the × light on hover. It used to be the purple accent, which read as a
+     different control in a tool that otherwise shares SWT's palette. */
   .at-slot__value-remove-btn {
     all: unset;
     position: absolute;
@@ -961,16 +968,18 @@ var AssigningTool=(function(f){"use strict";/**
     right: -6px;
     width: 18px;
     height: 18px;
-    border: 1.5px solid rgba(83, 82, 166, 0.45);
+    border: 1.5px solid var(--at-color-border);
     border-radius: 50%;
-    background: #fdf2f2;
+    background: var(--at-color-panel);
     cursor: pointer;
     box-sizing: border-box;
   }
 
   .at-slot__value-remove-btn:hover {
-    background: rgba(83, 82, 166, 0.85);
-    border-color: rgba(83, 82, 166, 0.85);
+    background: var(--at-color-border);
+    /* light, not the fill colour: the badge sits on a light slot and would otherwise lose
+       its edge exactly when it is being pointed at */
+    border-color: var(--at-color-panel);
   }
 
   .at-slot__value-remove-btn::before,
@@ -979,7 +988,7 @@ var AssigningTool=(function(f){"use strict";/**
     position: absolute;
     width: 8px;
     height: 1.5px;
-    background: rgba(83, 82, 166, 0.7);
+    background: var(--at-color-border);
     top: 50%;
     left: 50%;
     transform-origin: center;
@@ -987,7 +996,7 @@ var AssigningTool=(function(f){"use strict";/**
 
   .at-slot__value-remove-btn:hover::before,
   .at-slot__value-remove-btn:hover::after {
-    background: #fdf2f2;
+    background: var(--at-color-panel);
   }
 
   .at-slot__value-remove-btn::before {
