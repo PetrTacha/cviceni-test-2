@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Vesper";
+  src: url("VesperLibre-Regular.woff2") format("woff2"), url("VesperLibre-Regular.woff") format("woff"), url("VesperLibre-Regular.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Vesper";
+  src: url("VesperLibre-Bold.woff2") format("woff2"), url("VesperLibre-Bold.woff") format("woff"), url("VesperLibre-Bold.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("LatoLatin-Regular.woff2") format("woff2"), url("LatoLatin-Regular.woff") format("woff"), url("LatoLatin-Regular.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
